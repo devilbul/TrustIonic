@@ -1,9 +1,13 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Platform, IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
 import { Data } from '../../providers/data/data';
 import { AlertController } from 'ionic-angular';
 import { NewGamePage } from '../new-game/new-game';
-import { Camera, CameraOptions } from '@ionic-native/camera';
+
+import { File } from '@ionic-native/file';
+import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
+import { FilePath } from '@ionic-native/file-path';
+import { Camera } from '@ionic-native/camera';
 
 /**
  * Generated class for the NewPlayerPage page.
@@ -12,19 +16,23 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
  * Ionic pages and navigation.
  */
 
+declare var cordova: any;
+
 @IonicPage()
 @Component({
   selector: 'page-new-player',
   templateUrl: 'new-player.html',
 })
+
 export class NewPlayerPage {
 
   playerLength;
   player;
   form;
-  public base64Image: string;
   
-  constructor(private camera: Camera, public alertCtrl: AlertController, public data: Data, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, private camera: Camera, private transfer: FileTransfer, private file: File, private filePath: FilePath, 
+    public platform: Platform, public toastCtrl: ToastController, public alertCtrl: AlertController, public data: Data, public navParams: NavParams) {
+
     this.player = {};
     this.playerLength = 0;
     data.getPlayerList().subscribe(data => 
@@ -34,7 +42,7 @@ export class NewPlayerPage {
       });
     this.form = {
       player_id: "",
-      player_img: "",
+      player_img: "../assets/imgs/newPlayerAvatar.png",
       player_pseudo: "",
     };
   }
@@ -55,9 +63,7 @@ export class NewPlayerPage {
             text: 'ok',
             handler: () => {
               this.form = {
-                        player_id: "",
-                        player_img: "",
-                        player_pseudo: ""
+                        player_id: "", player_img: "", player_pseudo: ""
                     };
             }
           }
@@ -68,24 +74,70 @@ export class NewPlayerPage {
     }
   }
 
-  options: CameraOptions = {
-    quality: 100,
-    destinationType: this.camera.DestinationType.DATA_URL,
-    encodingType: this.camera.EncodingType.JPEG,
-    mediaType: this.camera.MediaType.PICTURE
+
+
+  private presentToast(text) {
+    let toast = this.toastCtrl.create({
+      message: text,
+      duration: 3000,
+      position: 'bottom'
+    });
+    toast.present();
   }
-  
-  takePicture(){
-    this.camera.getPicture(this.options).then((imageData) => {
-      let cameraImageSelector = document.getElementById(this.playerLength);
-      let image = "data:image/jpeg;base64," + imageData;
-      cameraImageSelector.setAttribute('src', image );
-      this.form.player_img = cameraImageSelector;
-      }, (err) => {
-      console.log(err);
-      });
-    
+
+  public takePicture(sourceType) {
+    // Create options for the Camera Dialog
+    var options = {
+      quality: 100,
+      sourceType: sourceType,
+      saveToPhotoAlbum: false,
+      correctOrientation: true
+    };
+   
+    // Get the data of an image
+    this.camera.getPicture(options).then((imagePath) => {
+      // Special handling for Android library
+      if (this.platform.is('android') && sourceType === this.camera.PictureSourceType.PHOTOLIBRARY) {
+        this.filePath.resolveNativePath(imagePath)
+          .then(filePath => {
+            let correctPath = filePath.substr(0, filePath.lastIndexOf('/') + 1);
+            let currentName = imagePath.substring(imagePath.lastIndexOf('/') + 1, imagePath.lastIndexOf('?'));
+            this.copyFileToLocalDir(correctPath, currentName, this.createFileName());
+          });
+      } else {
+        var currentName = imagePath.substr(imagePath.lastIndexOf('/') + 1);
+        var correctPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1);
+        this.copyFileToLocalDir(correctPath, currentName, this.createFileName());
+      }
+    }, (err) => {
+      this.presentToast('Error while selecting image.');
+    });
   }
+
+
+
+  private createFileName() {
+    var newFileName;
+    newFileName =  "player" + this.playerLength + "trust.png";
+    return newFileName;
+  }
+
+  private copyFileToLocalDir(namePath, currentName, newFileName) {
+    this.file.copyFile(namePath, currentName, cordova.file.dataDirectory, newFileName).then(success => {
+      this.form.player_img = cordova.file.dataDirectory + newFileName;
+    }, error => {
+      this.presentToast('Error while storing file.');
+    });
+  }
+
+  // Always get the accurate path to your apps folder
+public pathForImage(img) {
+  if (img === null) {
+    return '';
+  } else {
+    return cordova.file.dataDirectory + img;
+  }
+}
 
 
 }

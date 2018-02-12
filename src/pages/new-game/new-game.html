@@ -15,7 +15,7 @@
   <ion-list> 
     <ion-item *ngFor="let player of playerList" (click)="goToPlayer(player)">
         <ion-avatar ion-row>
-            <img id={{player.player_img}}/>
+            <img src={{player.player_img}}/>
             <ion-col>
               <h2>{{player.player_pseudo}}</h2>
               <p>Joueur {{player.player_id}}</p>

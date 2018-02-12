@@ -23,16 +23,13 @@
 
     <ion-item (click)="takePicture()">
       <ion-avatar ion-row>
-          <img src='/assets/imgs/newPlayerAvatar.png'>
+          <img src={{form.player_img}}>
       </ion-avatar>
     </ion-item>
 
     <div padding>
         <button ion-button color="primary" type="submit" block>Valider</button>
     </div>
-
-    <img id="{{playerLength}}"/>
-
 
   </form>
 </ion-content>
