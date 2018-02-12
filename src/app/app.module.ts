@@ -10,6 +10,7 @@ import { HomePage } from '../pages/home/home';
 import { NewGamePage } from '../pages/new-game/new-game';
 import { NewPlayerPage } from '../pages/new-player/new-player';
 import { TabsPage } from '../pages/tabs/tabs';
+import { EventPage } from '../pages/event/event';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule } from '@ionic/storage';
@@ -29,7 +30,8 @@ import { File } from '@ionic-native/file';
     HomePage,
     TabsPage,
     NewGamePage,
-    NewPlayerPage
+    NewPlayerPage,
+    EventPage
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,8 @@ import { File } from '@ionic-native/file';
     HomePage,
     TabsPage,
     NewGamePage,
-    NewPlayerPage
+    NewPlayerPage,
+    EventPage
   ],
   providers: [
     StatusBar,
