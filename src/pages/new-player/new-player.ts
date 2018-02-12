@@ -41,9 +41,7 @@ export class NewPlayerPage {
         this.playerLength = data.player.length + 1;
       });
     this.form = {
-      player_id: "",
-      player_img: "../assets/imgs/newPlayerAvatar.png",
-      player_pseudo: "",
+      player_img: "assets/imgs/newPlayerAvatar.png",
     };
   }
 
@@ -71,6 +69,9 @@ export class NewPlayerPage {
       });
       alert.present();
       this.navCtrl.push(NewGamePage);
+    }
+    else{
+      this.presentToast("Tu es certe peut être moche, mais j'ai au moins besoin de ton pseudo.");
     }
   }
 
