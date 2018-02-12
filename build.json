@@ -3,7 +3,7 @@
         "release" : {
             "keystore" : "isen.jks",
             "storePassword" : "isentoulon",
-            "alias" : "isen",
+            "alias" : "isentoulon",
             "password": "isentoulon",
             "keystoreType" : ""
         }
