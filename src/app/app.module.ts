@@ -18,7 +18,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Data } from '../providers/data/data';
 
 import { Camera } from '@ionic-native/camera';
-import { FileTransfer } from '@ionic-native/file-transfer';
 import { FilePath } from '@ionic-native/file-path';
 import { File } from '@ionic-native/file';
 
@@ -57,7 +56,6 @@ import { File } from '@ionic-native/file';
     Data,
     File,
     FilePath,
-    FileTransfer,
     Camera
   ]
 })

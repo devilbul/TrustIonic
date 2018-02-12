@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { NewPlayerPage } from '../new-player/new-player';
 import { Data } from '../../providers/data/data';
 
@@ -10,7 +10,6 @@ import { Data } from '../../providers/data/data';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-new-game',
   templateUrl: 'new-game.html',

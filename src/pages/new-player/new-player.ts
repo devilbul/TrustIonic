@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { Platform, IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
+import { Platform, NavController, NavParams, ToastController} from 'ionic-angular';
 import { Data } from '../../providers/data/data';
 import { AlertController } from 'ionic-angular';
 import { NewGamePage } from '../new-game/new-game';
 
 import { File } from '@ionic-native/file';
-import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
 import { FilePath } from '@ionic-native/file-path';
 import { Camera } from '@ionic-native/camera';
 
@@ -18,7 +17,6 @@ import { Camera } from '@ionic-native/camera';
 
 declare var cordova: any;
 
-@IonicPage()
 @Component({
   selector: 'page-new-player',
   templateUrl: 'new-player.html',
@@ -30,7 +28,7 @@ export class NewPlayerPage {
   player;
   form;
   
-  constructor(public navCtrl: NavController, private camera: Camera, private transfer: FileTransfer, private file: File, private filePath: FilePath, 
+  constructor(public navCtrl: NavController, private camera: Camera, private file: File, private filePath: FilePath, 
     public platform: Platform, public toastCtrl: ToastController, public alertCtrl: AlertController, public data: Data, public navParams: NavParams) {
 
     this.player = {};
@@ -42,6 +40,7 @@ export class NewPlayerPage {
       });
     this.form = {
       player_img: "assets/imgs/newPlayerAvatar.png",
+      player_pseudo: "",
     };
   }
 
@@ -126,6 +125,8 @@ export class NewPlayerPage {
   private copyFileToLocalDir(namePath, currentName, newFileName) {
     this.file.copyFile(namePath, currentName, cordova.file.dataDirectory, newFileName).then(success => {
       this.form.player_img = cordova.file.dataDirectory + newFileName;
+      this.form.player_pseudo = cordova.file.dataDirectory + newFileName;
+
     }, error => {
       this.presentToast('Error while storing file.');
     });
