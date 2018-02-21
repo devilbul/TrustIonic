@@ -3,10 +3,10 @@ import { NavController } from 'ionic-angular';
 import { EventPage } from '../event/event';
 
 @Component({
-  selector: 'page-contact',
-  templateUrl: 'contact.html'
+  selector: 'page-change',
+  templateUrl: 'change.html'
 })
-export class ContactPage {
+export class ChangePage {
 
   constructor(public navCtrl: NavController) {
 

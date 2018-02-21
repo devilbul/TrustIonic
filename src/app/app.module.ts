@@ -5,7 +5,7 @@ import { MyApp } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
+import { ChangePage } from '../pages/change/change';
 import { HomePage } from '../pages/home/home';
 import { NewGamePage } from '../pages/new-game/new-game';
 import { NewPlayerPage } from '../pages/new-player/new-player';
@@ -27,7 +27,7 @@ import { JoueurProvider } from '../providers/joueur/joueur';
   declarations: [
     MyApp,
     AboutPage,
-    ContactPage,
+    ChangePage,
     HomePage,
     TabsPage,
     NewGamePage,
@@ -44,7 +44,7 @@ import { JoueurProvider } from '../providers/joueur/joueur';
   entryComponents: [
     MyApp,
     AboutPage,
-    ContactPage,
+    ChangePage,
     HomePage,
     TabsPage,
     NewGamePage,
