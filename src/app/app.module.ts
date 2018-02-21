@@ -20,6 +20,8 @@ import { Data } from '../providers/data/data';
 import { Camera } from '@ionic-native/camera';
 import { FilePath } from '@ionic-native/file-path';
 import { File } from '@ionic-native/file';
+import { MoteurProvider } from '../providers/moteur/moteur';
+import { JoueurProvider } from '../providers/joueur/joueur';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,9 @@ import { File } from '@ionic-native/file';
     Data,
     File,
     FilePath,
-    Camera
+    Camera,
+    MoteurProvider,
+    JoueurProvider
   ]
 })
 export class AppModule {}
