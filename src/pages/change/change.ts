@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { EventPage } from '../event/event';
+import { MoteurProvider } from '../../providers/moteur/moteur';
 
 @Component({
   selector: 'page-change',
@@ -8,10 +9,12 @@ import { EventPage } from '../event/event';
 })
 export class ChangePage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public moteur: MoteurProvider) {
+
 
   }
-  goToEvent() {
+  GoToEvent() {
     this.navCtrl.push(EventPage);
+    this.navCtrl.setRoot(EventPage);
     }
 }

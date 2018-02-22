@@ -7,10 +7,10 @@ import { Injectable } from '@angular/core';
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
-@Injectable()
-export class JoueurProvider {
+
+export class Joueur {
   pseudo: String="Player";
-  image: String=""
+  image: String="";
   etat: String="survivor";//ex: survivor, traitor, murderer ...
   points: number=3;
 
