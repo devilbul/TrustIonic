@@ -48,29 +48,9 @@ export class MoteurProvider {
 
   GenerateEvent(){
     /*0*/this.event_list.push(new Event("Folie Meurtrière",["Nouvelle condition de victoire:","Faites tomber les points d'un joueur à 0 pour gagner.","Vous perdrez en cas d'évasion normale."],"https://www.thetimes.co.uk/imageserver/image/methode%2Ftimes%2Fprodmigration%2Fweb%2Fbin%2F231d1da5-daf4-30d6-a3a1-e895505ccc42.jpg?crop=1500%2C1000%2C0%2C0&resize=685"));
-    /*1*/this.event_list.push(new Event("L'autre event", ["Blabla c'est l'autre event"], ""));
+    /*1*/this.event_list.push(new Event("L'autre event", ["Blabla c'est l'autre event"], "https://cdn.discordapp.com/attachments/413514706083512341/416024975208611862/10662309.png"));
 
   }
-
-  EventTitle(id_event){
-    switch(id_event){
-      case 0:
-      return "Folie Meurtrière";
-      case 1:
-      return "Test Event";
-    }
-
-  }
-  EventDescription(id_event){
-      switch(id_event){
-        case 0:
-        return ["Nouvelle condition de victoire:","Faites tomber les points d'un joueur à 0 pour gagner.","Vous perdrez en cas d'évasion normale."];
-        case 1:
-        return["blabla c'est le deuxième event"];
-      }
-  }
-
-
 
   GestionEvent(id_joueur: number,id_event: number){
     switch(id_event){

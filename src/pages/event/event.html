@@ -10,10 +10,10 @@
   <div text-center>
     <h1>{{moteur.event_list[moteur.round[moteur.index_round][1]].title}}</h1>
   </div>
-  <img src="https://www.thetimes.co.uk/imageserver/image/methode%2Ftimes%2Fprodmigration%2Fweb%2Fbin%2F231d1da5-daf4-30d6-a3a1-e895505ccc42.jpg?crop=1500%2C1000%2C0%2C0&resize=685">
+  <img [src]=moteur.event_list[moteur.round[moteur.index_round][1]].image>
   <div text-center>
 
-    <h3 *ngFor="let line of moteur.EventDescription(moteur.round[moteur.index_round][1])">{{line}}</h3>
+    <h3 *ngFor="let line of moteur.event_list[moteur.round[moteur.index_round][1]].description">{{line}}</h3>
         <button ion-button round (click)=GoToChange()>Compris!</button>
   </div>
 

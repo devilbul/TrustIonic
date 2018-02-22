@@ -13,9 +13,13 @@ export class EventPage {
 
   }
   GoToChange(){
-    this.moteur.index_round+=1;
-    this.navCtrl.push(ChangePage);
+
+    //this.navCtrl.push(ChangePage);
     this.navCtrl.setRoot(ChangePage);
+
+    setTimeout(() => {//Timeout pour être sûr que l'event suivant n'apparraisse pas avant le changement de page
+      this.moteur.index_round+=1;
+    }, 100);
   }
 
 }
