@@ -18,7 +18,8 @@ export class EventPage {
     this.navCtrl.setRoot(ChangePage);
 
     setTimeout(() => {//Timeout pour être sûr que l'event suivant n'apparraisse pas avant le changement de page
-      this.moteur.index_round+=1;
+      this.moteur.GestionEvent(this.moteur.round[this.moteur.index_round][0],this.moteur.round[this.moteur.index_round][1]);
+      this.moteur.NextStep();
     }, 100);
   }
 
