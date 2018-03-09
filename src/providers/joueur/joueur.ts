@@ -15,7 +15,6 @@ export class Joueur {
   points: number=3;
 
   constructor(pseudo: String, image: String) {
-    console.log('Hello JoueurProvider Provider');
     this.pseudo=pseudo;
     this.image=image;
     this.points=3;

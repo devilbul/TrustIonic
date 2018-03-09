@@ -11,6 +11,7 @@ import { NewGamePage } from '../pages/new-game/new-game';
 import { NewPlayerPage } from '../pages/new-player/new-player';
 import { TabsPage } from '../pages/tabs/tabs';
 import { EventPage } from '../pages/event/event';
+import { DebatePage } from '../pages/debate/debate';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule } from '@ionic/storage';
@@ -32,7 +33,8 @@ import { MoteurProvider } from '../providers/moteur/moteur';
     TabsPage,
     NewGamePage,
     NewPlayerPage,
-    EventPage
+    EventPage,
+    DebatePage
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,8 @@ import { MoteurProvider } from '../providers/moteur/moteur';
     TabsPage,
     NewGamePage,
     NewPlayerPage,
-    EventPage
+    EventPage,
+    DebatePage
   ],
   providers: [
     StatusBar,

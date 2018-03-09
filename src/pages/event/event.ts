@@ -4,7 +4,7 @@ import { MoteurProvider } from '../../providers/moteur/moteur';
 import { ChangePage } from '../../pages/change/change';
 
 @Component({
-  selector: 'event-contact',
+  selector: 'page-event',
   templateUrl: 'event.html'
 })
 export class EventPage {

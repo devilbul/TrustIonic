@@ -12,26 +12,34 @@ import { Joueur } from '../../providers/joueur/joueur';
 */
 @Injectable()
 export class MoteurProvider {
-  round: any=[];
-  battles: number[]=[];
-  players: Joueur[]=[];
-  event_list: Event[]=[];
-  index_round: number=0;
-  ally_reward: number=2;
-  betray_reward: number=3;
-  betray_penalty: number=-1;
-  //id_active_player: number=0;
+  round: any=[];//Liste des events ayant lieu dans ce tour et des joueurs associés
+  battles: any[]=[];//Liste des duel de joueurs
+  duo: number[]=[];//Duo de joueur devant joueur ensemble lors d'un tour
+  ID_DUO: number=10;
+  players: Joueur[]=[];//Liste des joueurs
+  event_list: Event[]=[];//Liste de tous les events possibles
+  index_round: number=0;//Index indiquant à quel event du tour nous sommes
+  index_battles: number= 0;//Index indiquant à quel affrontement des battles nous sommes
+  ally_reward: number=2;//Gain si double Ally
+  betray_reward: number=3;//Gain si Betray contre Ally
+  betray_penalty: number=-1;//Perte si Ally contre Betray
 
 
   constructor(public http: HttpClient) {
     this.GenerateRound();
     this.GenerateJoueurs();
     this.GenerateEvent();
+    this.GenerateBattles();
+    this.players[1].points=4;
     console.log('Hello MoteurProvider Provider');
   }
 
   GenerateRound(){
-    this.round=[[2,2],[1,2],[3,2],[0,2]];
+    this.round=[[2,2],[1,2],[5,2],[0,2],[3,2],[4,2]];
+  }
+
+  GenerateBattles(){
+    this.battles=[[0,1],[2,3],[4,5]];
   }
 
   GetPlayer(index: number){
@@ -43,7 +51,9 @@ export class MoteurProvider {
       this.players.push(new Joueur("Ethan ","https://api.adorable.io/avatars/228/Ethan"));
       this.players.push(new Joueur("Romain ","https://api.adorable.io/avatars/228/Romain"));
       this.players.push(new Joueur("Ludo ","https://api.adorable.io/avatars/228/Ludo"));
-      this.players.push(new Joueur("Elouan ","https://api.adorable.io/avatars/228/Elouan"));
+      this.players.push(new Joueur("Elouan ","https://api.adorable.io/avatars/228/Eloluan"));
+      this.players.push(new Joueur("Jean","https://api.adorable.io/avatars/228/Jean"));
+      this.players.push(new Joueur("Roger ","https://api.adorable.io/avatars/228/Rooger"));
 
   }
 
@@ -61,17 +71,18 @@ export class MoteurProvider {
     /*2*/this.event_list.push(new Event(
       "RAS",
       ["Rien à signaler"],
-      ""));
+      "https://upload.wikimedia.org/wikipedia/commons/3/39/Tauchzeichen-Okay-Diving-Sign-Okay.png"));
 
-      /*this.event_list.push(new Event(
+      /*Exemple:
+      this.event_list.push(new Event(
       "Folie Meurtrière",
       [
         "Nouvelle condition de victoire:",
         "Faites tomber les points d'un joueur à 0 pour gagner.",
         "Vous perdrez en cas d'évasion normale."
       ],
-      "https://www.thetimes.co.uk/imageserver/image/methode%2Ftimes%2Fprodmigration%2Fweb%2Fbin%2F231d1da5-daf4-30d6-a3a1-e895505ccc42.jpg?crop=1500%2C1000%2C0%2C0&resize=685"));*/
-
+      "https://www.thetimes.co.uk/imageserver/image/methode%2Ftimes%2Fprodmigration%2Fweb%2Fbin%2F231d1da5-daf4-30d6-a3a1-e895505ccc42.jpg?crop=1500%2C1000%2C0%2C0&resize=685"));
+      */
 
   }
 
@@ -83,7 +94,7 @@ export class MoteurProvider {
       case 1://Dépréciation
       this.players[id_joueur].points-=1;
       break;
-      case 1://RAS
+      case 2://RAS
 
       break;
 
@@ -92,8 +103,17 @@ export class MoteurProvider {
     }
   }
 
+  WhatNext(){
+    if(this.index_round+1>this.round.length){//si fin de tour event
+      return "debate";
+    }
+    else{
+      return "event";
+    }
+  }
+
   NextStep(){
-    this.index_round=(this.index_round+1)%4
+    this.index_round=(this.index_round+1)%(this.round.length);
   }
 
 
