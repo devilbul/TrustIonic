@@ -10,12 +10,14 @@
   <div text-center>
     <h1>{{moteur.event_list[moteur.round[moteur.index_round][1]].title}}</h1>
   </div>
-  <div class="illus"><img [src]=moteur.event_list[moteur.round[moteur.index_round][1]].image></div>
+  <div class="illus" text-center>
+    <img [src]=moteur.event_list[moteur.round[moteur.index_round][1]].image>
+  </div>
 
   <div text-center>
 
     <h3 *ngFor="let line of moteur.event_list[moteur.round[moteur.index_round][1]].description">{{line}}</h3>
-        <button ion-button round (click)=GoToChange()>Compris!</button>
+    <button ion-button round (click)=GoToChange()>Compris!</button>
   </div>
 
 </ion-content>

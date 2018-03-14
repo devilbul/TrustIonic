@@ -14,7 +14,6 @@ export class ChangePage {
 
   }
   GoToEvent() {
-    this.navCtrl.push(EventPage);
     this.navCtrl.setRoot(EventPage);
     }
 }

@@ -5,16 +5,25 @@ import { ChangePage } from '../../pages/change/change';
 import { VChangeSPage } from '../VchangeS/VchangeS';
 
 @Component({
-  selector: 'page-debate',
-  templateUrl: 'debate.html'
+  selector: 'page-bilan',
+  templateUrl: 'bilan.html'
 })
-export class DebatePage {
+
+export class BilanPage {
+  index: number = 0;
 
   constructor(public navCtrl: NavController, public moteur: MoteurProvider) {
 
   }
-  Ready(){
-    this.navCtrl.setRoot(VChangeSPage);
+  Ready() {
+    this.moteur.index_round=0;
+    this.navCtrl.setRoot(ChangePage);
+  }
+  Prev() {
+    this.index = (this.index - 1) % this.moteur.battles.length;
+  }
+  Next() {
+    this.index = (this.index + 1) % this.moteur.battles.length;
   }
 
 

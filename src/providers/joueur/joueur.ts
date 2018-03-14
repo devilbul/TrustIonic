@@ -13,6 +13,8 @@ export class Joueur {
   image: String="";
   etat: String="survivor";//ex: survivor, traitor, murderer ...
   points: number=3;
+  prev_points: number=0;
+  vote: String="B";//Dernier vote du joueur, A=ally, B=betray
 
   constructor(pseudo: String, image: String) {
     this.pseudo=pseudo;

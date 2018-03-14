@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Passez l'appareil
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div text-center>
+    <h2>Vous faites face à</h2>
+  </div>
+  <div *ngIf="moteur.index_battles[1]==0">
+    <div text-center>
+      <h1>{{moteur.players[moteur.battles[moteur.index_battles[0]][1]].pseudo}}</h1>
+    </div>
+    <ion-item text-center>
+      <ion-avatar ion-row class="avatar2">
+        <img [src]=moteur.players[moteur.battles[moteur.index_battles[0]][1]].image>
+      </ion-avatar>
+    </ion-item>
+  </div>
+  <div *ngIf="moteur.index_battles[1]==1">
+    <div text-center>
+      <h1>{{moteur.players[moteur.battles[moteur.index_battles[0]][0]].pseudo}}</h1>
+    </div>
+    <ion-item text-center>
+      <ion-avatar ion-row class="avatar2">
+        <img [src]=moteur.players[moteur.battles[moteur.index_battles[0]][0]].image>
+      </ion-avatar>
+    </ion-item>
+  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col text-center>
+        <button ion-button round (click)=Ally()>S'allier</button>
+      </ion-col>
+      <ion-col text-center>
+        <button ion-button round (click)=Betray()>Trahir</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

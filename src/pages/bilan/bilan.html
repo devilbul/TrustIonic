@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Débat
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col text-center *ngFor="let i of [0,1]">
+        <h1>{{moteur.players[moteur.battles[index][i]].pseudo}}</h1>
+        <ion-item>
+          <ion-avatar ion-row class="avatar">
+            <img [src]=moteur.players[moteur.battles[index][i]].image>
+          </ion-avatar>
+        </ion-item>
+        <h1 *ngIf='moteur.players[moteur.battles[index][i]].vote=="A"'>Alliance</h1>
+        <h1 *ngIf='moteur.players[moteur.battles[index][i]].vote=="B"'>Trahison</h1>
+
+        <h1>{{moteur.players[moteur.battles[index][i]].prev_points}}</h1>
+        <img class="fleche" src="https://cdn.pixabay.com/photo/2016/03/31/18/34/arrow-1294465__340.png">
+        <h1>{{moteur.players[moteur.battles[index][i]].points}}</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button ion-button round (click)=Prev()>&larr;</button>
+      </ion-col>
+      <ion-col>
+      </ion-col>
+      <ion-col>
+        <button ion-button round (click)=Ready()>OK</button>
+      </ion-col>
+      <ion-col>
+      </ion-col>
+      <ion-col>
+        <button ion-button round (click)=Next()>&rarr;</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+</ion-content>

@@ -22,6 +22,9 @@ import { Camera } from '@ionic-native/camera';
 import { FilePath } from '@ionic-native/file-path';
 import { File } from '@ionic-native/file';
 import { MoteurProvider } from '../providers/moteur/moteur';
+import { VChangeSPage } from '../pages/VchangeS/VchangeS';
+import { VotePage } from '../pages/vote/vote';
+import { BilanPage } from '../pages/bilan/bilan';
 //import { JoueurProvider } from '../providers/joueur/joueur';
 
 @NgModule({
@@ -34,7 +37,10 @@ import { MoteurProvider } from '../providers/moteur/moteur';
     NewGamePage,
     NewPlayerPage,
     EventPage,
-    DebatePage
+    DebatePage,
+    VChangeSPage,
+    VotePage,
+    BilanPage
   ],
   imports: [
     BrowserModule,
@@ -52,7 +58,10 @@ import { MoteurProvider } from '../providers/moteur/moteur';
     NewGamePage,
     NewPlayerPage,
     EventPage,
-    DebatePage
+    DebatePage,
+    VChangeSPage,
+    VotePage,
+    BilanPage
   ],
   providers: [
     StatusBar,

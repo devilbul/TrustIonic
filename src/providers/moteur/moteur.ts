@@ -15,12 +15,17 @@ export class MoteurProvider {
   round: any=[];//Liste des events ayant lieu dans ce tour et des joueurs associés
   battles: any[]=[];//Liste des duel de joueurs
   duo: number[]=[];//Duo de joueur devant joueur ensemble lors d'un tour
+  votes: any[]=[]//Liste des votes des joueurs
   ID_DUO: number=10;
+
   players: Joueur[]=[];//Liste des joueurs
   event_list: Event[]=[];//Liste de tous les events possibles
+
   index_round: number=0;//Index indiquant à quel event du tour nous sommes
-  index_battles: number= 0;//Index indiquant à quel affrontement des battles nous sommes
+  index_battles: number[]= [1,1];//Index indiquant à quel affrontement des battles nous sommes
+
   ally_reward: number=2;//Gain si double Ally
+  tie: number=0;//Perte si double Betray
   betray_reward: number=3;//Gain si Betray contre Ally
   betray_penalty: number=-1;//Perte si Ally contre Betray
 
@@ -30,16 +35,17 @@ export class MoteurProvider {
     this.GenerateJoueurs();
     this.GenerateEvent();
     this.GenerateBattles();
-    this.players[1].points=4;
     console.log('Hello MoteurProvider Provider');
   }
 
   GenerateRound(){
-    this.round=[[2,2],[1,2],[5,2],[0,2],[3,2],[4,2]];
+    //this.round=[[2,2],[1,2],[5,2],[0,2],[3,2],[4,2]];
+    this.round=[[2,2],[1,2],[3,2],[0,2]];
   }
 
   GenerateBattles(){
-    this.battles=[[0,1],[2,3],[4,5]];
+    //this.battles=[[0,1],[2,3],[4,5]];
+    this.battles=[[0,1],[2,3]];
   }
 
   GetPlayer(index: number){
@@ -52,8 +58,8 @@ export class MoteurProvider {
       this.players.push(new Joueur("Romain ","https://api.adorable.io/avatars/228/Romain"));
       this.players.push(new Joueur("Ludo ","https://api.adorable.io/avatars/228/Ludo"));
       this.players.push(new Joueur("Elouan ","https://api.adorable.io/avatars/228/Eloluan"));
-      this.players.push(new Joueur("Jean","https://api.adorable.io/avatars/228/Jean"));
-      this.players.push(new Joueur("Roger ","https://api.adorable.io/avatars/228/Rooger"));
+      //this.players.push(new Joueur("Jean","https://api.adorable.io/avatars/228/Jean"));
+      //this.players.push(new Joueur("Roger ","https://api.adorable.io/avatars/228/Rooger"));
 
   }
 
@@ -103,6 +109,34 @@ export class MoteurProvider {
     }
   }
 
+  DoBattles(){
+    for(var i=0; i<this.battles.length; i++){
+      this.Battle(this.players[this.battles[i][0]],this.players[this.battles[i][1]]);
+    }
+  }
+
+  Battle(j1: Joueur, j2:Joueur){
+    j1.prev_points=j1.points;
+    j2.prev_points=j2.points;
+    if(j1.vote=="A" && j2.vote=="A"){
+      j1.points+=this.ally_reward;
+      j2.points+=this.ally_reward;
+    }
+    if(j1.vote=="A" && j2.vote=="B"){
+      j1.points+=this.betray_penalty;
+      j2.points+=this.betray_reward;
+    }
+    if(j1.vote=="B" && j2.vote=="A"){
+      j1.points+=this.betray_reward;
+      j2.points+=this.betray_reward;
+    }
+    if(j1.vote=="B" && j2.vote=="B"){
+      j1.points+=this.tie;
+      j2.points+=this.tie;
+    }
+
+  }
+
   WhatNext(){
     if(this.index_round+1>this.round.length){//si fin de tour event
       return "debate";
@@ -113,7 +147,7 @@ export class MoteurProvider {
   }
 
   NextStep(){
-    this.index_round=(this.index_round+1)%(this.round.length);
+    this.index_round=(this.index_round+1);
   }
 
 

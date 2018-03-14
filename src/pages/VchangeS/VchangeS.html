@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Passez l'appareil
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div text-center>
+    <h1>{{moteur.players[moteur.battles[moteur.index_battles[0]][moteur.index_battles[1]]].pseudo}}</h1>
+  </div>
+  <ion-item text-center>
+    <ion-avatar ion-row class="avatar">
+      <img [src]=moteur.players[moteur.battles[moteur.index_battles[0]][moteur.index_battles[1]]].image>
+    </ion-avatar>
+  </ion-item>
+  <div text-center>
+    <h2>C'est à vous de voter</h2>
+  </div>
+
+
+  <div text-center>
+    <button ion-button round (click)=Ready()>Je suis prêt!</button>
+  </div>
+
+</ion-content>
