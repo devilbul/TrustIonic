@@ -128,7 +128,7 @@ export class MoteurProvider {
     }
     if(j1.vote=="B" && j2.vote=="A"){
       j1.points+=this.betray_reward;
-      j2.points+=this.betray_reward;
+      j2.points+=this.betray_penalty;
     }
     if(j1.vote=="B" && j2.vote=="B"){
       j1.points+=this.tie;
