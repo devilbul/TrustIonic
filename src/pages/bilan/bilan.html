@@ -9,20 +9,64 @@
 <ion-content>
   <ion-grid>
     <ion-row>
-      <ion-col text-center *ngFor="let i of [0,1]">
-        <h1>{{moteur.players[moteur.battles[index][i]].pseudo}}</h1>
+      <ion-col text-center>
+        <h1>{{moteur.players[moteur.battles[index][0]].pseudo}}</h1>
         <ion-item>
           <ion-avatar ion-row class="avatar">
-            <img [src]=moteur.players[moteur.battles[index][i]].image>
+            <img [src]=moteur.players[moteur.battles[index][0]].image>
           </ion-avatar>
         </ion-item>
-        <h1 *ngIf='moteur.players[moteur.battles[index][i]].vote=="A"'>Alliance</h1>
-        <h1 *ngIf='moteur.players[moteur.battles[index][i]].vote=="B"'>Trahison</h1>
+        <h1 *ngIf='moteur.players[moteur.battles[index][0]].vote=="A"'>Alliance</h1>
+        <h1 *ngIf='moteur.players[moteur.battles[index][0]].vote=="B"'>Trahison</h1>
 
-        <h1>{{moteur.players[moteur.battles[index][i]].prev_points}}</h1>
+        <h1>{{moteur.players[moteur.battles[index][0]].prev_points}}</h1>
         <img class="fleche" src="https://cdn.pixabay.com/photo/2016/03/31/18/34/arrow-1294465__340.png">
-        <h1>{{moteur.players[moteur.battles[index][i]].points}}</h1>
+        <h1>{{moteur.players[moteur.battles[index][0]].points}}</h1>
       </ion-col>
+      <ion-col text-center *ngIf="moteur.battles[index][1]!=moteur.ID_DUO">
+        <h1>{{moteur.players[moteur.battles[index][1]].pseudo}}</h1>
+        <ion-item>
+          <ion-avatar ion-row class="avatar">
+            <img [src]=moteur.players[moteur.battles[index][1]].image>
+          </ion-avatar>
+        </ion-item>
+        <h1 *ngIf='moteur.players[moteur.battles[index][1]].vote=="A"'>Alliance</h1>
+        <h1 *ngIf='moteur.players[moteur.battles[index][1]].vote=="B"'>Trahison</h1>
+
+        <h1>{{moteur.players[moteur.battles[index][1]].prev_points}}</h1>
+        <img class="fleche" src="https://cdn.pixabay.com/photo/2016/03/31/18/34/arrow-1294465__340.png">
+        <h1>{{moteur.players[moteur.battles[index][1]].points}}</h1>
+      </ion-col>
+      <ion-col text-center *ngIf="moteur.battles[index][1]==moteur.ID_DUO">
+        <h1>{{moteur.players[moteur.duo[0]].pseudo}}</h1>
+        <ion-item>
+          <ion-avatar ion-row class="avatar">
+            <img [src]=moteur.players[moteur.duo[0]].image>
+          </ion-avatar>
+        </ion-item>
+        <h1 *ngIf='moteur.players[moteur.duo[0]].vote=="A"'>Alliance</h1>
+        <h1 *ngIf='moteur.players[moteur.duo[0]].vote=="B"'>Trahison</h1>
+
+        <h1>{{moteur.players[moteur.duo[0]].prev_points}}</h1>
+        <img class="fleche" src="https://cdn.pixabay.com/photo/2016/03/31/18/34/arrow-1294465__340.png">
+        <h1>{{moteur.players[moteur.duo[0]].points}}</h1>
+      </ion-col>
+      <ion-col text-center *ngIf="moteur.battles[index][1]==moteur.ID_DUO">
+        <h1>{{moteur.players[moteur.duo[1]].pseudo}}</h1>
+        <ion-item>
+          <ion-avatar ion-row class="avatar">
+            <img [src]=moteur.players[moteur.duo[1]].image>
+          </ion-avatar>
+        </ion-item>
+        <h1 *ngIf='moteur.players[moteur.duo[1]].vote=="A"'>Alliance</h1>
+        <h1 *ngIf='moteur.players[moteur.duo[1]].vote=="B"'>Trahison</h1>
+
+        <h1>{{moteur.players[moteur.duo[1]].prev_points}}</h1>
+        <img class="fleche" src="https://cdn.pixabay.com/photo/2016/03/31/18/34/arrow-1294465__340.png">
+        <h1>{{moteur.players[moteur.duo[1]].points}}</h1>
+      </ion-col>
+
+
     </ion-row>
     <ion-row>
       <ion-col>

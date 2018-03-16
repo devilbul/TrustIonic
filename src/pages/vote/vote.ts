@@ -17,11 +17,23 @@ export class VotePage {
 
   }
   Ally(){
-    this.moteur.players[this.moteur.battles[this.moteur.index_battles[0]][this.moteur.index_battles[1]]].vote="A";
+    if(this.moteur.battles[this.moteur.index_battles[0]][this.moteur.index_battles[1]]==this.moteur.ID_DUO){
+      this.moteur.players[this.moteur.duo[0]].vote="A";
+      this.moteur.players[this.moteur.duo[1]].vote="A";
+    }
+    else{
+      this.moteur.players[this.moteur.battles[this.moteur.index_battles[0]][this.moteur.index_battles[1]]].vote="A";
+    }
     this.Next();
   }
   Betray(){
-    this.moteur.players[this.moteur.battles[this.moteur.index_battles[0]][this.moteur.index_battles[1]]].vote="B";
+    if(this.moteur.battles[this.moteur.index_battles[0]][this.moteur.index_battles[1]]==this.moteur.ID_DUO){
+      this.moteur.players[this.moteur.duo[0]].vote="B";
+      this.moteur.players[this.moteur.duo[1]].vote="B";
+    }
+    else{
+      this.moteur.players[this.moteur.battles[this.moteur.index_battles[0]][this.moteur.index_battles[1]]].vote="B";
+    }
     this.Next();
   }
   Next(){

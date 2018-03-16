@@ -11,14 +11,41 @@
     <h2>Vous faites face à</h2>
   </div>
   <div *ngIf="moteur.index_battles[1]==0">
-    <div text-center>
-      <h1>{{moteur.players[moteur.battles[moteur.index_battles[0]][1]].pseudo}}</h1>
+    <div *ngIf="moteur.battles[moteur.index_battles[0]][1]!=moteur.ID_DUO">
+      <div text-center>
+        <h1>{{moteur.players[moteur.battles[moteur.index_battles[0]][1]].pseudo}}</h1>
+      </div>
+      <ion-item text-center>
+        <ion-avatar ion-row class="avatar2">
+          <img [src]=moteur.players[moteur.battles[moteur.index_battles[0]][1]].image>
+        </ion-avatar>
+      </ion-item>
     </div>
-    <ion-item text-center>
-      <ion-avatar ion-row class="avatar2">
-        <img [src]=moteur.players[moteur.battles[moteur.index_battles[0]][1]].image>
-      </ion-avatar>
-    </ion-item>
+    <div *ngIf="moteur.battles[moteur.index_battles[0]][1]==moteur.ID_DUO">
+      <ion-row>
+        <ion-col>
+          <div text-center>
+            <h1>{{moteur.players[moteur.duo[0]].pseudo}}</h1>
+          </div>
+          <ion-item text-center>
+            <ion-avatar ion-row class="avatar2">
+              <img [src]=moteur.players[moteur.duo[0]].image>
+            </ion-avatar>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+            <div text-center>
+              <h1>{{moteur.players[moteur.duo[1]].pseudo}}</h1>
+            </div>
+            <ion-item text-center>
+              <ion-avatar ion-row class="avatar2">
+                <img [src]=moteur.players[moteur.duo[1]].image>
+              </ion-avatar>
+            </ion-item>
+          </ion-col>
+      </ion-row>
+    </div>
+
   </div>
   <div *ngIf="moteur.index_battles[1]==1">
     <div text-center>

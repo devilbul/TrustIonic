@@ -20,7 +20,12 @@ export class BilanPage {
     this.navCtrl.setRoot(ChangePage);
   }
   Prev() {
-    this.index = (this.index - 1) % this.moteur.battles.length;
+    if(this.index - 1<0){
+      this.index=this.moteur.battles.length-1;
+    }
+    else{
+      this.index -=1;
+    }
   }
   Next() {
     this.index = (this.index + 1) % this.moteur.battles.length;

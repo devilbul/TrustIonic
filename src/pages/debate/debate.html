@@ -9,27 +9,46 @@
 <ion-content>
   <ion-item *ngFor="let duel of moteur.battles">
     <ion-row>
-      <ion-col text-center>
-        <h1>{{moteur.players[duel[0]].points}}</h1>
-      </ion-col>
+
       <ion-col text-center>
         <h2>{{moteur.players[duel[0]].pseudo}}</h2>
         <ion-avatar>
           <img [src]=moteur.players[duel[0]].image>
         </ion-avatar>
+        <h1>{{moteur.players[duel[0]].points}}</h1>
       </ion-col>
+
       <ion-col text-center>
-          <h1>VS</h1>
+        <h1>VS</h1>
       </ion-col>
-      <ion-col text-center>
+
+      <ion-col *ngIf="duel[1]!=moteur.ID_DUO" text-center>
         <h2>{{moteur.players[duel[1]].pseudo}}</h2>
         <ion-avatar>
           <img [src]=moteur.players[duel[1]].image>
         </ion-avatar>
-      </ion-col>
-      <ion-col text-center>
         <h1>{{moteur.players[duel[1]].points}}</h1>
       </ion-col>
+
+      <ion-col *ngIf="duel[1]==moteur.ID_DUO" text-center>
+        <h2>{{moteur.players[moteur.duo[0]].pseudo}}</h2>
+        <ion-avatar>
+          <img [src]=moteur.players[moteur.duo[0]].image>
+        </ion-avatar>
+        <h1>{{moteur.players[moteur.duo[0]].points}}</h1>
+      </ion-col>
+
+      <ion-col *ngIf="duel[1]==moteur.ID_DUO" text-center>
+        <h2>{{moteur.players[moteur.duo[1]].pseudo}}</h2>
+        <ion-avatar>
+          <img [src]=moteur.players[moteur.duo[1]].image>
+        </ion-avatar>
+        <h1>{{moteur.players[moteur.duo[1]].points}}</h1>
+      </ion-col>
+
+
+
+
     </ion-row>
   </ion-item>
   <div text-center>

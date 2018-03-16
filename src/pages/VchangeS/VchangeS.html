@@ -7,17 +7,50 @@
 </ion-header>
 
 <ion-content>
-  <div text-center>
-    <h1>{{moteur.players[moteur.battles[moteur.index_battles[0]][moteur.index_battles[1]]].pseudo}}</h1>
+  <div *ngIf="moteur.battles[moteur.index_battles[0]][moteur.index_battles[1]]!=moteur.ID_DUO">
+    <div text-center>
+      <h1>{{moteur.players[moteur.battles[moteur.index_battles[0]][moteur.index_battles[1]]].pseudo}}</h1>
+    </div>
+    <ion-item text-center>
+      <ion-avatar ion-row class="avatar">
+        <img [src]=moteur.players[moteur.battles[moteur.index_battles[0]][moteur.index_battles[1]]].image>
+      </ion-avatar>
+    </ion-item>
+    <div text-center>
+      <h2>C'est à vous de voter</h2>
+    </div>
   </div>
-  <ion-item text-center>
-    <ion-avatar ion-row class="avatar">
-      <img [src]=moteur.players[moteur.battles[moteur.index_battles[0]][moteur.index_battles[1]]].image>
-    </ion-avatar>
-  </ion-item>
-  <div text-center>
-    <h2>C'est à vous de voter</h2>
+
+  <div *ngIf="moteur.battles[moteur.index_battles[0]][moteur.index_battles[1]]==moteur.ID_DUO">
+    <ion-row>
+      <ion-col>
+        <div text-center>
+          <h1>{{moteur.players[moteur.duo[0]].pseudo}}</h1>
+        </div>
+        <ion-item text-center>
+          <ion-avatar ion-row class="avatar">
+            <img [src]=moteur.players[moteur.duo[0]].image>
+          </ion-avatar>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <div text-center>
+          <h1>{{moteur.players[moteur.duo[1]].pseudo}}</h1>
+        </div>
+        <ion-item text-center>
+          <ion-avatar ion-row class="avatar">
+            <img [src]=moteur.players[moteur.duo[1]].image>
+          </ion-avatar>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <div text-center>
+      <h2>C'est à vous de voter</h2>
+    </div>
+
+
   </div>
+
 
 
   <div text-center>
