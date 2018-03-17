@@ -16,6 +16,9 @@ export class BilanPage {
 
   }
   Ready() {
+    this.moteur.ResetPointModifiers();
+    this.moteur.GenerateRound();
+    console.log(this.moteur.round);
     this.moteur.index_round=0;
     this.navCtrl.setRoot(ChangePage);
   }
