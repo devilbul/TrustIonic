@@ -11,7 +11,8 @@ import { Injectable } from '@angular/core';
 export class Joueur {
   pseudo: String="Player";
   image: String="";
-  etat: String="";//ex: survivor, traitor, murderer ...
+  etat: String="";//ex: survivor, traitor, follower ...
+  following: number;//ID du traitre suivi si ce joueur est un follower
   points: number=3;
   prev_points: number=0;
   vote: String="B";//Dernier vote du joueur, A=ally, B=betray

@@ -32,7 +32,6 @@ export class MoteurProvider {
 
   goal: number = 10;//objectif de point à atteindre
 
-
   constructor(public http: HttpClient) {
     this.GenerateJoueurs();
     this.GenerateEvent();
@@ -64,25 +63,25 @@ export class MoteurProvider {
     var list = this.AliveList();
     this.shuffleArray(list);
     while (list.length > 0) {
-      event = this.Randint(1, 5);
+      event = this.Randint(1, 7);
       check = true;
       for (var i = 0; i < prog; i++) {
         if (this.event_list[event].ban.indexOf(this.round[i][1]) > -1) {
           check = false;
         }
       }
-      if([1].indexOf(event)>-1){//Si event qui change d'état
-        var count=0;
-        for(var j of this.players){//Compte le nbr de rôles spéciaux
-          if (j.etat!="survivor"){
+      if ([1, 6].indexOf(event) > -1) {//Si event qui change d'état
+        var count = 0;
+        for (var j of this.players) {//Compte le nbr de rôles spéciaux
+          if (j.etat != "survivor") {
             count++;
           }
         }
-        if (this.players[list[list.length-1]].etat!="survivor"){
-          check=false;
+        if (this.players[list[list.length - 1]].etat != "survivor") {
+          check = false;
         }
-        if(count/this.players.length>=0.5){//Si roles spéciaux majoritaires
-          check=false;
+        if (count / this.players.length >= 0.5) {//Si roles spéciaux majoritaires
+          check = false;
         }
 
       }
@@ -126,10 +125,10 @@ export class MoteurProvider {
     this.players.push(new Joueur("Romain ", "https://api.adorable.io/avatars/228/Romain"));
     this.players.push(new Joueur("Ludo ", "https://api.adorable.io/avatars/228/Ludo"));
     this.players.push(new Joueur("Elouan ", "https://api.adorable.io/avatars/228/Eloluan"));
-    this.players.push(new Joueur("Jean", "https://api.adorable.io/avatars/228/Jean"));
-    this.players.push(new Joueur("Roger ","https://api.adorable.io/avatars/228/Rooger"));
-    this.players.push(new Joueur("Henry ","https://api.adorable.io/avatars/228/Henry"));
-    //this.players.push(new Joueur("Marc-Olivier ","https://api.adorable.io/avatars/228/Marco"));
+    /*this.players.push(new Joueur("Jean", "https://api.adorable.io/avatars/228/Jean"));
+    this.players.push(new Joueur("Roger ", "https://api.adorable.io/avatars/228/Rooger"));*/
+    this.players.push(new Joueur("Henry ", "https://api.adorable.io/avatars/228/Henry"));
+    this.players.push(new Joueur("Marc-Olivier ", "https://api.adorable.io/avatars/228/Marco"));
   }
 
   GenerateEvent() {
@@ -147,7 +146,7 @@ export class MoteurProvider {
         "Accumulez des points et enfuyez vous seul",
         "Vous ne faites pas équipe avec l’(es) autre(s) traître(s)"],
       "https://gorouadama.files.wordpress.com/2013/09/chaque-ami-moitie-dun-traitre-checked-l-0_m7sy.jpeg",
-      [1]));
+      [1, 6]));
 
     /*2*/this.event_list.push(new Event(
       "Le calme avant la tempête",
@@ -172,10 +171,28 @@ export class MoteurProvider {
     /*5*/this.event_list.push(new Event(
       "Double peine",
       ["Pour ce tour",
-      "La pénalité en cas de trahison est de 2 points",
-      "Cela affecte tous les joueurs mais libre à vous de partager ou non cette info"],
-      "",
-      [5]));
+        "La trahison retire 2 points au joueur trahi",
+        "Cela affecte tous les joueurs mais libre à vous de partager ou non cette info"],
+      "https://ae01.alicdn.com/kf/HTB10cEIIpXXXXcVXFXXq6xXFXXX8/Dynasty-Warriors-7-Cosplay-Liu-Bei-Armes-p-e-Double.jpg_640x640.jpg",
+      [5, 7]));
+
+    /*6*/this.event_list.push(new Event(
+      "A ses crochets",
+      ["",
+        "Vous ne pouvez vous enfuire que s’il/elle s’enfuit",
+        "Vous n’avez plus à accumuler de points",
+        "Vous perdez si les survivants ou un autre traître s’enfuient",
+        "Si ce joueur disparait, vous disparaissez avec"],
+      "https://pm1.narvii.com/6360/e9f6d7c891cd9ed65c51708048035f876902d302_hq.jpg",
+      [6, 1]));
+
+    /*7*/this.event_list.push(new Event(
+      "L’union fait la force",
+      ["Pour ce tour",
+        "Le gain de point en cas d'alliance passe à 3",
+        "Cela affecte tous les joueurs mais libre à vous de partager ou non cette info"],
+      "https://i0.wp.com/gabonreview.com/wp-content/uploads/cooperation-1.jpg?resize=640%2C463",
+      [7, 5]));
 
   }
 
@@ -209,6 +226,23 @@ export class MoteurProvider {
         this.betray_penalty = -2;
         break;
 
+      case 6://A ses crochets
+        var trait_list = [];
+        for (var i = 0; i < this.players.length; i++) {
+          if (this.players[i].etat == "traitor") {
+            trait_list.push(i);
+          }
+        }
+        this.shuffleArray(trait_list);
+        this.players[id_joueur].etat = "follower";
+        this.players[id_joueur].following = trait_list[0];
+        this.event_list[6].description[0] = this.players[trait_list[0]].pseudo + "est un(e) traître";
+        break;
+
+      case 7://L'union..
+        this.ally_reward = 3;
+        break;
+
       default:
         console.log("Deso pas deso, l'event a pas chargé");
     }
@@ -216,7 +250,7 @@ export class MoteurProvider {
 
   ResetPointModifiers() {
     this.ally_reward = 2;
-    this.tie= 0;
+    this.tie = 0;
     this.betray_reward = 3;
     this.betray_penalty = -1;
   }

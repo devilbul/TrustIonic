@@ -14,6 +14,9 @@ export class ChangePage {
 
   }
   GoToEvent() {
+    this.moteur.GestionEvent(this.moteur.round[this.moteur.index_round][0], this.moteur.round[this.moteur.index_round][1]);
     this.navCtrl.setRoot(EventPage);
-    }
+
+
+  }
 }
