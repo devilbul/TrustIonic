@@ -15,20 +15,18 @@
 
 <ion-content padding>
   <form name="form" class="" (ngSubmit)="addPlayer(form)">
-      
+
     <ion-item>
-        <ion-label floating>Votre pseudo</ion-label>
-        <ion-input name="pseudo" [(ngModel)]="form.player_pseudo" type="text"></ion-input>
+      <ion-label floating>Votre pseudo</ion-label>
+      <ion-input name="pseudo" [(ngModel)]="form.player_pseudo" type="text"></ion-input>
     </ion-item>
 
-    <ion-item (click)="takePicture()">
-      <ion-avatar ion-row>
-          <img src={{form.player_img}}>
-      </ion-avatar>
+    <ion-item text-center (click)="takePicture()">
+      <img width="200" height="200" class="centered-and-cropped" src={{form.player_img}}>
     </ion-item>
 
     <div padding>
-        <button ion-button color="primary" type="submit" block>Valider</button>
+      <button ion-button color="primary" type="submit" block>Valider</button>
     </div>
 
   </form>

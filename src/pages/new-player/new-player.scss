@@ -1,8 +1,7 @@
 page-new-player {
-  .avatar img {
-    margin: auto;
-    width:100% !important;
-    height : 100% !important;
+  .centered-and-cropped {
+    object-fit: cover;
+    border-radius:50%;
  }
 
 }
