@@ -17,7 +17,68 @@
   <div text-center>
 
     <h3 *ngFor="let line of moteur.event_list[moteur.round[moteur.index_round][1]].description">{{line}}</h3>
-    <button ion-button round (click)=GoToChange()>Compris!</button>
+    <div *ngIf='moteur.players[moteur.round[moteur.index_round][0]].etat!="rogue" && moteur.players[moteur.round[moteur.index_round][0]].etat!="sherlock"'>
+      <button ion-button round (click)=GoToChange()>Compris!</button>
+    </div>
+
+  </div>
+
+
+  <div *ngIf='moteur.players[moteur.round[moteur.index_round][0]].etat=="rogue"'>
+    <br>
+    <h1 text-center>Assassin: choisissez votre cible</h1>
+    <ion-item *ngFor="let joueur of moteur.players">
+      <ion-row>
+        <ion-col>
+          <ion-avatar>
+            <img [src]=joueur.image>
+          </ion-avatar>
+        </ion-col>
+        <ion-col>
+          <h2>{{joueur.pseudo}}</h2>
+        </ion-col>
+        <ion-col>
+          <button ion-button round (click)=Assassin(joueur)>Cibler</button>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+    <div text-center>
+      <button ion-button round (click)=GoToChange()>Ne cibler personne</button>
+    </div>
+
+  </div>
+
+  <div *ngIf='moteur.players[moteur.round[moteur.index_round][0]].etat=="sherlock"'>
+    <br>
+    <h1 text-center>Détective: Avez vous un suspect?</h1>
+    <ion-item>
+      <ion-item *ngFor="let joueur of moteur.players">
+        <ion-row>
+          <h2 text-center>{{joueur.pseudo}}</h2>
+        </ion-row>
+        <ion-row text-center>
+          <ion-col>
+            <button ion-button round (click)="Detective('survivor',joueur)">Survivant</button>
+          </ion-col>
+          <ion-col>
+            <button ion-button round (click)="Detective('traitor',joueur)">Traître</button>
+          </ion-col>
+          <ion-col>
+            <button ion-button round (click)="Detective('follower',joueur)">Suiveur</button>
+          </ion-col>
+          <ion-col>
+            <button ion-button round (click)="Detective('rogue',joueur)">Assassin</button>
+          </ion-col>
+          <ion-col>
+            <button ion-button round (click)="Detective('sherlock',joueur)">Détective</button>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-item>
+    <div text-center>
+      <button ion-button round (click)=GoToChange()>Ne cibler personne</button>
+    </div>
+
   </div>
 
 </ion-content>

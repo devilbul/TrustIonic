@@ -17,6 +17,7 @@ export class Joueur {
   prev_points: number=0;
   vote: String="B";//Dernier vote du joueur, A=ally, B=betray
   buff: String="";//Si le joueur subbit un effet particulier
+  win: String="";
 
   constructor(pseudo: String, image: String) {
     this.pseudo=pseudo;
