@@ -15,7 +15,6 @@ export class MoteurProvider {
   round: any = [];//Liste des events ayant lieu dans ce tour et des joueurs associés
   battles: any[] = [];//Liste des duel de joueurs
   duo: number[] = [0, 1];//Duo de joueur devant joueur ensemble lors d'un tour
-  votes: any[] = []//Liste des votes des joueurs
 
   ID_DUO: number = 10;
 
@@ -63,14 +62,14 @@ export class MoteurProvider {
     var list = this.AliveList();
     this.shuffleArray(list);
     while (list.length > 0) {
-      event = this.Randint(1, 8);
+      event = this.Randint(1, 10);
       check = true;
       for (var i = 0; i < prog; i++) {
         if (this.event_list[event].ban.indexOf(this.round[i][1]) > -1) {
           check = false;
         }
       }
-      if ([1, 6].indexOf(event) > -1) {//Si event qui change d'état
+      if ([1, 6,9,10].indexOf(event) > -1) {//Si event qui change d'état
         var count = 0;
         for (var j of this.players) {//Compte le nbr de rôles spéciaux
           if (j.etat != "survivor") {
@@ -127,10 +126,12 @@ export class MoteurProvider {
     this.players.push(new Joueur("Romain ", "https://api.adorable.io/avatars/228/Romain"));
     this.players.push(new Joueur("Ludo ", "https://api.adorable.io/avatars/228/Ludo"));
     this.players.push(new Joueur("Elouan ", "https://api.adorable.io/avatars/228/Eloluan"));
-    this.players.push(new Joueur("Jean", "https://api.adorable.io/avatars/228/Jean"));
-    /*this.players.push(new Joueur("Roger ", "https://api.adorable.io/avatars/228/Rooger"));
+   /* this.players.push(new Joueur("Jean", "https://api.adorable.io/avatars/228/Jean"));
+    this.players.push(new Joueur("Roger ", "https://api.adorable.io/avatars/228/Rooger"));
     this.players.push(new Joueur("Henry ", "https://api.adorable.io/avatars/228/Henry"));
-    this.players.push(new Joueur("Marc-Olivier ", "https://api.adorable.io/avatars/228/Marco"));*/
+    this.players.push(new Joueur("Marc-Olivier ", "https://api.adorable.io/avatars/228/Marco"));
+    this.players.push(new Joueur("Pablo ", "https://api.adorable.io/avatars/228/Pablo"));*/
+
   }
 
   GenerateEvent() {
@@ -148,7 +149,7 @@ export class MoteurProvider {
         "Accumulez des points et enfuyez vous seul",
         "Vous ne faites pas équipe avec l’(es) autre(s) traître(s)"],
       "https://gorouadama.files.wordpress.com/2013/09/chaque-ami-moitie-dun-traitre-checked-l-0_m7sy.jpeg",
-      [1, 6]));
+      [1, 6,9,10]));
 
     /*2*/this.event_list.push(new Event(
       "Le calme avant la tempête",
@@ -186,7 +187,7 @@ export class MoteurProvider {
         "Vous perdez si les survivants ou un autre traître s’enfuient",
         "Si ce joueur disparait, vous disparaissez avec"],
       "https://pm1.narvii.com/6360/e9f6d7c891cd9ed65c51708048035f876902d302_hq.jpg",
-      [6, 1]));
+      [6, 1,9,10]));
 
     /*7*/this.event_list.push(new Event(
       "L’union fait la force",
@@ -201,6 +202,24 @@ export class MoteurProvider {
       ["Vous ne pourrez pas choisir ce que vous allez voter lors de votre prochain face à face"],
       "https://image.freepik.com/free-icon/question-mark_318-52837.jpg",
       [8]));
+
+    /*9*/this.event_list.push(new Event(
+      "Folie Meurtrière",
+      ["Vous êtes maintenant un assassin",
+        "Vous pourrez retirer un point à une joueur par tour",
+        "Vous gagnez s’il ne reste que des assassins en jeu."],
+      "https://secure.i.telegraph.co.uk/multimedia/archive/02382/horror_2382351b.jpg",
+      [9,10,6,1]));
+
+    /*10*/this.event_list.push(new Event(
+      "Elémentaire mon cher",
+      ["Vous êtes maintenant un détective",
+      "Une fois par tour, vous pourrez tenter de désigner le rôle d’un joueur",
+      "Si vous avez raison, ce joueur perdra 3 points, si vous avez tort, c’est vous qui perdrez 3 points",
+      "Vous devez toujours vous enfuir avec les autres survivants",
+      "Vous perdez si tous les survivants disparaissent."],
+      "http://www.divorcemalin.com/wp-content/uploads/2016/02/d%C3%A9tective-priv%C3%A9.jpg",
+      [10,9,6,1]));
 
   }
 
@@ -244,7 +263,7 @@ export class MoteurProvider {
         this.shuffleArray(trait_list);
         this.players[id_joueur].etat = "follower";
         this.players[id_joueur].following = trait_list[0];
-        this.event_list[6].description[0] = this.players[trait_list[0]].pseudo + "est un(e) traître";
+        this.event_list[6].description[0] = this.players[trait_list[0]].pseudo + " est un(e) traître, et vous êtes maintenant son suiveur";
         break;
 
       case 7://L'union..
@@ -252,7 +271,15 @@ export class MoteurProvider {
         break;
 
       case 8://Aveugle
-        this.players[id_joueur].buff="blind";
+        this.players[id_joueur].buff = "blind";
+        break;
+
+      case 9://assassin
+        this.players[id_joueur].etat = "rogue";
+        break;
+
+      case 10://détective
+        this.players[id_joueur].etat = "sherlock";
         break;
 
       default:
