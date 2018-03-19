@@ -36,6 +36,17 @@ export class VotePage {
     }
     this.Next();
   }
+  Random(){
+    var rand=this.moteur.Randint(0,1);
+    if(rand ==0){
+      this.moteur.players[this.moteur.battles[this.moteur.index_battles[0]][this.moteur.index_battles[1]]].vote="A";
+    }
+    else{
+      this.moteur.players[this.moteur.battles[this.moteur.index_battles[0]][this.moteur.index_battles[1]]].vote="B";
+    }
+    this.moteur.players[this.moteur.battles[this.moteur.index_battles[0]][this.moteur.index_battles[1]]].buff="";
+    this.Next();
+  }
   Next(){
     if(this.moteur.index_battles[0]>=this.moteur.battles.length-1 && this.moteur.index_battles[1]==1){
       this.moteur.DoBattles();

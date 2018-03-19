@@ -63,7 +63,7 @@ export class MoteurProvider {
     var list = this.AliveList();
     this.shuffleArray(list);
     while (list.length > 0) {
-      event = this.Randint(1, 7);
+      event = this.Randint(1, 8);
       check = true;
       for (var i = 0; i < prog; i++) {
         if (this.event_list[event].ban.indexOf(this.round[i][1]) > -1) {
@@ -105,7 +105,9 @@ export class MoteurProvider {
       }
     }
     else {
-      this.shuffleArray(this.round);
+      while (this.players[this.round[0][0]].buff == "blind" || this.players[this.round[1][0]].buff == "blind") {
+        this.shuffleArray(this.round);
+      }
       this.duo = [this.round[0][0], this.round[1][0]];
       this.battles.push([this.round[2][0], this.ID_DUO]);
       for (var j = 3; j < this.round.length; j += 2) {
@@ -125,10 +127,10 @@ export class MoteurProvider {
     this.players.push(new Joueur("Romain ", "https://api.adorable.io/avatars/228/Romain"));
     this.players.push(new Joueur("Ludo ", "https://api.adorable.io/avatars/228/Ludo"));
     this.players.push(new Joueur("Elouan ", "https://api.adorable.io/avatars/228/Eloluan"));
-    /*this.players.push(new Joueur("Jean", "https://api.adorable.io/avatars/228/Jean"));
-    this.players.push(new Joueur("Roger ", "https://api.adorable.io/avatars/228/Rooger"));*/
+    this.players.push(new Joueur("Jean", "https://api.adorable.io/avatars/228/Jean"));
+    /*this.players.push(new Joueur("Roger ", "https://api.adorable.io/avatars/228/Rooger"));
     this.players.push(new Joueur("Henry ", "https://api.adorable.io/avatars/228/Henry"));
-    this.players.push(new Joueur("Marc-Olivier ", "https://api.adorable.io/avatars/228/Marco"));
+    this.players.push(new Joueur("Marc-Olivier ", "https://api.adorable.io/avatars/228/Marco"));*/
   }
 
   GenerateEvent() {
@@ -194,6 +196,12 @@ export class MoteurProvider {
       "https://i0.wp.com/gabonreview.com/wp-content/uploads/cooperation-1.jpg?resize=640%2C463",
       [7, 5]));
 
+    /*8*/this.event_list.push(new Event(
+      "A l'aveugle",
+      ["Vous ne pourrez pas choisir ce que vous allez voter lors de votre prochain face à face"],
+      "https://image.freepik.com/free-icon/question-mark_318-52837.jpg",
+      [8]));
+
   }
 
   GestionEvent(id_joueur: number, id_event: number) {
@@ -241,6 +249,10 @@ export class MoteurProvider {
 
       case 7://L'union..
         this.ally_reward = 3;
+        break;
+
+      case 8://Aveugle
+        this.players[id_joueur].buff="blind";
         break;
 
       default:
