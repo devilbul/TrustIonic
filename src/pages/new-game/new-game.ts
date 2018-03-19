@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+
+import { ChangePage } from '../change/change';
 import { NewPlayerPage } from '../new-player/new-player';
-import { Data } from '../../providers/data/data';
+
+import { Joueur } from '../../providers/joueur/joueur';
+import { MoteurProvider } from '../../providers/moteur/moteur';
 
 /**
  * Generated class for the NewGamePage page.
@@ -16,24 +20,28 @@ import { Data } from '../../providers/data/data';
 })
 export class NewGamePage {
 
-  playerList: any;
-  
+  playerList: Joueur[];
+  playerListLength: number;
 
-  constructor(public data: Data, public navCtrl: NavController, public navParams: NavParams) {
-  this.playerList = [];
+
+  constructor(public moteur: MoteurProvider, public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  
+
   ionViewDidLoad() {
-    this.data.getPlayerList().subscribe(data => 
-      {
-        this.playerList = data.player;
-      }
-    ); 
+    this.playerList = this.moteur.players;
+    this.playerListLength = this.playerList.length;
+    console.log(this.playerListLength);
   }
 
   newPlayer() {
     this.navCtrl.push(NewPlayerPage);
+  }
+
+  startGame() {
+    this.moteur.GenerateFirstRound();
+    this.moteur.GenerateEvent();
+    this.navCtrl.setRoot(ChangePage);
   }
 
 

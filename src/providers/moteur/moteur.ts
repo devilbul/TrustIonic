@@ -4,12 +4,8 @@ import { ChangePage } from '../../pages/change/change'
 import { Event } from '../../classes/Event';
 
 import { Joueur } from '../../providers/joueur/joueur';
-/*
-  Generated class for the MoteurProvider provider.
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
+
 @Injectable()
 export class MoteurProvider {
   round: any = [];//Liste des events ayant lieu dans ce tour et des joueurs associés
@@ -33,9 +29,12 @@ export class MoteurProvider {
   goal: number = 10;//objectif de point à atteindre
 
   constructor(public http: HttpClient) {
-    this.GenerateJoueurs();
-    this.GenerateEvent();
-    this.GenerateFirstRound();
+
+    //this.GenerateJoueurs();
+    //this.GenerateFirstRound();
+
+    //this.GenerateEvent();
+
     console.log('Hello MoteurProvider Provider');
     console.log(this.players);
   }

@@ -16,7 +16,6 @@ import { DebatePage } from '../pages/debate/debate';
 import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule } from '@ionic/storage';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { Data } from '../providers/data/data';
 
 import { Camera } from '@ionic-native/camera';
 import { FilePath } from '@ionic-native/file-path';
@@ -25,6 +24,9 @@ import { MoteurProvider } from '../providers/moteur/moteur';
 import { VChangeSPage } from '../pages/VchangeS/VchangeS';
 import { VotePage } from '../pages/vote/vote';
 import { BilanPage } from '../pages/bilan/bilan';
+
+
+
 //import { JoueurProvider } from '../providers/joueur/joueur';
 
 @NgModule({
@@ -40,7 +42,7 @@ import { BilanPage } from '../pages/bilan/bilan';
     DebatePage,
     VChangeSPage,
     VotePage,
-    BilanPage
+    BilanPage,
   ],
   imports: [
     BrowserModule,
@@ -67,7 +69,6 @@ import { BilanPage } from '../pages/bilan/bilan';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    Data,
     File,
     FilePath,
     Camera,

@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { Platform, NavController, NavParams, ToastController} from 'ionic-angular';
-import { Data } from '../../providers/data/data';
+import { Platform, NavController, NavParams, ToastController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { NewGamePage } from '../new-game/new-game';
+
+import { Joueur } from '../../providers/joueur/joueur';
+import { MoteurProvider } from '../../providers/moteur/moteur';
 
 import { File } from '@ionic-native/file';
 import { FilePath } from '@ionic-native/file-path';
@@ -24,57 +26,45 @@ declare var cordova: any;
 
 export class NewPlayerPage {
 
-  playerLength;
-  player;
   form;
-  
-  constructor(public navCtrl: NavController, private camera: Camera, private file: File, private filePath: FilePath, 
-    public platform: Platform, public toastCtrl: ToastController, public alertCtrl: AlertController, public data: Data, public navParams: NavParams) {
 
-    this.player = {};
-    this.playerLength = 0;
-    data.getPlayerList().subscribe(data => 
-      {
-        this.player = data.player[0];
-        this.playerLength = data.player.length + 1;
-      });
+  constructor(public moteur: MoteurProvider, public navCtrl: NavController, private camera: Camera, private file: File, private filePath: FilePath,
+    public platform: Platform, public toastCtrl: ToastController, public alertCtrl: AlertController, public navParams: NavParams) {
+
     this.form = {
       player_img: "assets/imgs/newPlayerAvatar.png",
       player_pseudo: "",
     };
+
   }
 
   addPlayer(form) {
-    if(form.player_pseudo != "") {
+    if (form.player_pseudo != "") {
       var newPlayer = {
-          player_id: this.playerLength,
-          player_img: form.player_img,
-          player_pseudo: form.player_pseudo,
+        img: form.player_img,
+        pseudo: form.player_pseudo,
       }
-      this.data.addPlayerToList(newPlayer);
+      this.moteur.players.push(new Joueur(newPlayer.pseudo, newPlayer.img));
       let alert = this.alertCtrl.create({
         title: 'Félicitation',
-        subTitle: 'Votre joueur a été ajouté',  
+        subTitle: 'Votre joueur a été ajouté',
         buttons: [
           {
             text: 'ok',
             handler: () => {
               this.form = {
-                        player_id: "", player_img: "", player_pseudo: ""
-                    };
+                player_id: "", player_img: "", player_pseudo: ""
+              };
             }
-          }
-        ]
+          }]
       });
       alert.present();
       this.navCtrl.push(NewGamePage);
     }
-    else{
+    else {
       this.presentToast("Tu es certe peut être moche, mais j'ai au moins besoin de ton pseudo.");
     }
   }
-
-
 
   private presentToast(text) {
     let toast = this.toastCtrl.create({
@@ -93,7 +83,7 @@ export class NewPlayerPage {
       saveToPhotoAlbum: false,
       correctOrientation: true
     };
-   
+
     // Get the data of an image
     this.camera.getPicture(options).then((imagePath) => {
       // Special handling for Android library
@@ -118,28 +108,26 @@ export class NewPlayerPage {
 
   private createFileName() {
     var newFileName;
-    newFileName =  "player" + this.playerLength + "trust.png";
+    newFileName = "player" + this.moteur.players.length + "trust.png";
     return newFileName;
   }
 
   private copyFileToLocalDir(namePath, currentName, newFileName) {
     this.file.copyFile(namePath, currentName, cordova.file.dataDirectory, newFileName).then(success => {
       this.form.player_img = cordova.file.dataDirectory + newFileName;
-      this.form.player_pseudo = cordova.file.dataDirectory + newFileName;
-
     }, error => {
       this.presentToast('Error while storing file.');
     });
   }
 
   // Always get the accurate path to your apps folder
-public pathForImage(img) {
-  if (img === null) {
-    return '';
-  } else {
-    return cordova.file.dataDirectory + img;
+  public pathForImage(img) {
+    if (img === null) {
+      return '';
+    } else {
+      return cordova.file.dataDirectory + img;
+    }
   }
-}
 
 
 }
