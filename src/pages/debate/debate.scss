@@ -6,9 +6,10 @@ page-debate {
     text-align: center;
   }
 
-  img {
-    margin: auto;
-
- }
+ .centered-and-cropped {
+  object-fit: cover;
+  border-radius:50%;
+  margin: auto;
+}
 
 }

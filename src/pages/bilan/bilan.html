@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title text-center>
-      C'est l'heure du verdict!
+      C'est l'heure du verdict !
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -12,9 +12,11 @@
       <ion-col text-center>
         <h1>{{moteur.players[moteur.battles[index][0]].pseudo}}</h1>
         <ion-item>
-          <ion-avatar ion-row class="avatar">
-            <img [src]=moteur.players[moteur.battles[index][0]].image>
-          </ion-avatar>
+
+          <div text-center>
+            <img width="100" height="100" class="centered-and-cropped" [src]=moteur.players[moteur.battles[index][0]].image>
+          </div>
+
         </ion-item>
         <h1 *ngIf='moteur.players[moteur.battles[index][0]].vote=="A"'>Alliance</h1>
         <h1 *ngIf='moteur.players[moteur.battles[index][0]].vote=="B"'>Trahison</h1>
@@ -26,9 +28,11 @@
       <ion-col text-center *ngIf="moteur.battles[index][1]!=moteur.ID_DUO">
         <h1>{{moteur.players[moteur.battles[index][1]].pseudo}}</h1>
         <ion-item>
-          <ion-avatar ion-row class="avatar">
-            <img [src]=moteur.players[moteur.battles[index][1]].image>
-          </ion-avatar>
+
+          <div text-center>
+            <img width="100" height="100" class="centered-and-cropped" [src]=moteur.players[moteur.battles[index][1]].image>
+          </div>
+
         </ion-item>
         <h1 *ngIf='moteur.players[moteur.battles[index][1]].vote=="A"'>Alliance</h1>
         <h1 *ngIf='moteur.players[moteur.battles[index][1]].vote=="B"'>Trahison</h1>
@@ -40,9 +44,11 @@
       <ion-col text-center *ngIf="moteur.battles[index][1]==moteur.ID_DUO">
         <h1>{{moteur.players[moteur.duo[0]].pseudo}}</h1>
         <ion-item>
-          <ion-avatar ion-row class="avatar">
-            <img [src]=moteur.players[moteur.duo[0]].image>
-          </ion-avatar>
+
+          <div text-center>
+            <img width="100" height="100" class="centered-and-cropped" [src]=moteur.players[moteur.duo[0]].image>
+          </div>
+
         </ion-item>
         <h1 *ngIf='moteur.players[moteur.duo[0]].vote=="A"'>Alliance</h1>
         <h1 *ngIf='moteur.players[moteur.duo[0]].vote=="B"'>Trahison</h1>
@@ -54,9 +60,11 @@
       <ion-col text-center *ngIf="moteur.battles[index][1]==moteur.ID_DUO">
         <h1>{{moteur.players[moteur.duo[1]].pseudo}}</h1>
         <ion-item>
-          <ion-avatar ion-row class="avatar">
-            <img [src]=moteur.players[moteur.duo[1]].image>
-          </ion-avatar>
+
+          <div text-center>
+            <img width="100" height="100" class="centered-and-cropped" [src]=moteur.players[moteur.duo[1]].image>
+          </div>
+
         </ion-item>
         <h1 *ngIf='moteur.players[moteur.duo[1]].vote=="A"'>Alliance</h1>
         <h1 *ngIf='moteur.players[moteur.duo[1]].vote=="B"'>Trahison</h1>
