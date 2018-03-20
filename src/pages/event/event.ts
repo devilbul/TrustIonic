@@ -20,15 +20,8 @@ export class EventPage {
       this.moteur.GenerateBattles();
       this.navCtrl.setRoot(DebatePage);
 
-      setTimeout(() => {//Timeout pour être sûr que l'event suivant n'apparraisse pas avant le changement de page
-        this.moteur.index_battles = [0, 0];
-        console.log(this.moteur.players);
-      }, 100);
-
-
     }
     else {
-      //this.navCtrl.push(ChangePage);
       this.navCtrl.setRoot(ChangePage);
 
       setTimeout(() => {//Timeout pour être sûr que l'event suivant n'apparraisse pas avant le changement de page
