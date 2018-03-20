@@ -21,6 +21,7 @@ export class BilanPage {
       this.navCtrl.setRoot(ResultsPage);
     }
     else {
+      this.moteur.index_battles = [0, 0];
       this.moteur.ResetPointModifiers();
       console.log(this.moteur.players);
       this.moteur.GenerateRound();
