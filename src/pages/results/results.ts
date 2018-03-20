@@ -13,6 +13,4 @@ export class ResultsPage {
 
   }
 
-
-
 }
