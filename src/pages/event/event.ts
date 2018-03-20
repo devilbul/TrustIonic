@@ -19,8 +19,11 @@ export class EventPage {
     if (this.moteur.index_round >= this.moteur.round.length-1) {
       this.moteur.GenerateBattles();
       this.navCtrl.setRoot(DebatePage);
-      this.moteur.index_battles = [0, 0];
-      console.log(this.moteur.players);
+
+      setTimeout(() => {//Timeout pour être sûr que l'event suivant n'apparraisse pas avant le changement de page
+        this.moteur.index_battles = [0, 0];
+        console.log(this.moteur.players);
+      }, 100);
 
 
     }
