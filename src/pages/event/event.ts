@@ -4,6 +4,7 @@ import { MoteurProvider } from '../../providers/moteur/moteur';
 import { ChangePage } from '../../pages/change/change';
 import { VChangeSPage } from '../VchangeS/VchangeS';
 import { DebatePage } from '../debate/debate';
+import { Joueur } from '../../providers/joueur/joueur';
 
 @Component({
   selector: 'page-event',
@@ -33,6 +34,20 @@ export class EventPage {
       }, 100);
     }
 
+  }
+  Assassin(joueur: Joueur){
+    joueur.points-=1;
+    this.GoToChange();
+  }
+
+  Detective(etat: String, joueur: Joueur){
+    if(etat==joueur.etat){
+      joueur.points-=3;
+    }
+    else{
+      this.moteur.players[this.moteur.round[this.moteur.index_round][0]].points-=3;
+    }
+    this.GoToChange();
   }
 
 }
