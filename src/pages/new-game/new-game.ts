@@ -44,7 +44,9 @@ export class NewGamePage {
     this.navCtrl.setRoot(ChangePage);
   }
 
-
+  supp(i: number) {
+    this.moteur.players.splice(i,1);
+  }
 
 
 }

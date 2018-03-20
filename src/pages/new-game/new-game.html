@@ -13,13 +13,13 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item *ngFor="let player of playerList">
+    <ion-item *ngFor="let player of playerList; let i=index">
 
         <img width="50" height="50" class="centered-and-cropped" src={{player.image}}/>
         <div item-end>
           <h2>{{player.pseudo}}</h2>
         </div>
-
+        <button ion-button item-end (click)="supp(i)">Supprimer</button>
     </ion-item>
   </ion-list>
 
