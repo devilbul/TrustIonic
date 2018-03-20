@@ -8,7 +8,6 @@ import { ChangePage } from '../pages/change/change';
 import { HomePage } from '../pages/home/home';
 import { NewGamePage } from '../pages/new-game/new-game';
 import { NewPlayerPage } from '../pages/new-player/new-player';
-import { TabsPage } from '../pages/tabs/tabs';
 import { EventPage } from '../pages/event/event';
 import { DebatePage } from '../pages/debate/debate';
 
@@ -34,7 +33,6 @@ import { ResultsPage } from '../pages/results/results';
     MyApp,
     ChangePage,
     HomePage,
-    TabsPage,
     NewGamePage,
     NewPlayerPage,
     EventPage,
@@ -55,7 +53,6 @@ import { ResultsPage } from '../pages/results/results';
     MyApp,
     ChangePage,
     HomePage,
-    TabsPage,
     NewGamePage,
     NewPlayerPage,
     EventPage,
