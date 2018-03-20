@@ -9,8 +9,26 @@ page-results {
   object-fit: cover;
 }
 
-.over {
+.overMiss {
   background-image: url('../../assets/imgs/miss.png');
+  position: absolute;
+  top:0px;
+  z-index: 1;
+  width: 200px;
+  height: 150px;
+}
+
+.overWinner {
+  background-image: url('../../assets/imgs/winner.png');
+  position: absolute;
+  top:0px;
+  z-index: 1;
+  width: 200px;
+  height: 150px;
+}
+
+.overLosser {
+  background-image: url('../../assets/imgs/jail2.png');
   position: absolute;
   top:0px;
   z-index: 1;
