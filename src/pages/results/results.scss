@@ -1,15 +1,25 @@
 page-results {
 
-  .vs ion-col{
-    vertical-align: middle;
-    margin: auto;
-    text-align: center;
-  }
+  .foo {
+   position: absolute;
+   top:0px;
+}
 
  .centered-and-cropped {
   object-fit: cover;
-  border-radius:50%;
-  margin: auto;
+}
+
+.over {
+  background-image: url('../../assets/imgs/miss.png');
+  position: absolute;
+  top:0px;
+  z-index: 1;
+  width: 200px;
+  height: 150px;
+}
+
+.monItem{
+  height: 175px;
 }
 
 }

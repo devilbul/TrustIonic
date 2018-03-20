@@ -21,9 +21,16 @@
       <ion-col>
         <h2>{{joueur.win}}</h2>
       </ion-col>
-
     </ion-row>
   </ion-item>
+
+  <ion-item text-center *ngFor="let joueur of moteur.players" class="monItem">
+    <div class="foo">
+      <div class="over"></div>
+      <img width="200" height="150" class="centered-and-cropped" [src]=joueur.image>
+    </div>
+  </ion-item>
+
   <div text-center>
     <button ion-button round>Retour</button>
   </div>
