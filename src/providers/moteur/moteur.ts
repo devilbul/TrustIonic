@@ -68,7 +68,7 @@ export class MoteurProvider {
           check = false;
         }
       }
-      if ([1, 6,9,10].indexOf(event) > -1) {//Si event qui change d'état
+      if ([1, 6, 9, 10].indexOf(event) > -1) {//Si event qui change d'état
         var count = 0;
         for (var j of this.players) {//Compte le nbr de rôles spéciaux
           if (j.etat != "survivor") {
@@ -125,11 +125,11 @@ export class MoteurProvider {
     this.players.push(new Joueur("Romain ", "https://api.adorable.io/avatars/228/Romain"));
     this.players.push(new Joueur("Ludo ", "https://api.adorable.io/avatars/228/Ludo"));
     this.players.push(new Joueur("Elouan ", "https://api.adorable.io/avatars/228/Eloluan"));
-   /* this.players.push(new Joueur("Jean", "https://api.adorable.io/avatars/228/Jean"));
-    this.players.push(new Joueur("Roger ", "https://api.adorable.io/avatars/228/Rooger"));
-    this.players.push(new Joueur("Henry ", "https://api.adorable.io/avatars/228/Henry"));
-    this.players.push(new Joueur("Marc-Olivier ", "https://api.adorable.io/avatars/228/Marco"));
-    this.players.push(new Joueur("Pablo ", "https://api.adorable.io/avatars/228/Pablo"));*/
+    /* this.players.push(new Joueur("Jean", "https://api.adorable.io/avatars/228/Jean"));
+     this.players.push(new Joueur("Roger ", "https://api.adorable.io/avatars/228/Rooger"));
+     this.players.push(new Joueur("Henry ", "https://api.adorable.io/avatars/228/Henry"));
+     this.players.push(new Joueur("Marc-Olivier ", "https://api.adorable.io/avatars/228/Marco"));
+     this.players.push(new Joueur("Pablo ", "https://api.adorable.io/avatars/228/Pablo"));*/
 
   }
 
@@ -148,7 +148,7 @@ export class MoteurProvider {
         "Accumulez des points et enfuyez vous seul",
         "Vous ne faites pas équipe avec l’(es) autre(s) traître(s)"],
       "https://gorouadama.files.wordpress.com/2013/09/chaque-ami-moitie-dun-traitre-checked-l-0_m7sy.jpeg",
-      [1, 6,9,10]));
+      [1, 6, 9, 10]));
 
     /*2*/this.event_list.push(new Event(
       "Le calme avant la tempête",
@@ -186,7 +186,7 @@ export class MoteurProvider {
         "Vous perdez si les survivants ou un autre traître s’enfuient",
         "Si ce joueur disparait, vous disparaissez avec"],
       "https://pm1.narvii.com/6360/e9f6d7c891cd9ed65c51708048035f876902d302_hq.jpg",
-      [6, 1,9,10]));
+      [6, 1, 9, 10]));
 
     /*7*/this.event_list.push(new Event(
       "L’union fait la force",
@@ -206,19 +206,19 @@ export class MoteurProvider {
       "Folie Meurtrière",
       ["Vous êtes maintenant un assassin",
         "Vous pourrez retirer un point à une joueur par tour",
-        "Vous gagnez s’il ne reste que des assassins en jeu."],
+        "Vous gagnez en atteignant 15 points ou si tous les survivants disparraissent"],
       "https://secure.i.telegraph.co.uk/multimedia/archive/02382/horror_2382351b.jpg",
-      [9,10,6,1]));
+      [9, 10, 6, 1]));
 
     /*10*/this.event_list.push(new Event(
       "Elémentaire mon cher",
       ["Vous êtes maintenant un détective",
-      "Une fois par tour, vous pourrez tenter de désigner le rôle d’un joueur",
-      "Si vous avez raison, ce joueur perdra 3 points, si vous avez tort, c’est vous qui perdrez 3 points",
-      "Vous devez toujours vous enfuir avec les autres survivants",
-      "Vous perdez si tous les survivants disparaissent."],
+        "Une fois par tour, vous pourrez tenter de désigner le rôle d’un joueur",
+        "Si vous avez raison, ce joueur perdra 3 points, si vous avez tort, c’est vous qui perdrez 3 points",
+        "Vous devez toujours vous enfuir avec les autres survivants",
+        "Vous perdez si tous les survivants disparaissent."],
       "http://www.divorcemalin.com/wp-content/uploads/2016/02/d%C3%A9tective-priv%C3%A9.jpg",
-      [10,9,6,1]));
+      [10, 9, 6, 1]));
 
   }
 
@@ -355,6 +355,149 @@ export class MoteurProvider {
 
   NextStep() {
     this.index_round = (this.index_round + 1);
+  }
+
+  EndRound() {
+    var list = this.AliveList();
+    var survivors = [];
+    var sherlocks = [];
+    var traitors = [];
+    var followers = [];
+    var rogues = [];
+
+    var max_point = -1;
+    var index_max = [];
+
+    for (var i of list) {
+      switch (this.players[i].etat) {
+        case "survivor":
+          survivors.push(i);
+          break;
+        case "sherlock":
+          sherlocks.push(i);
+          break;
+        case "traitor":
+          traitors.push(i);
+          break;
+        case "follower":
+          followers.push(i);
+          break;
+        case "rogue":
+          rogues.push(i);
+          break;
+      }
+    }
+    for (var joueur of this.players) {
+      joueur.win = "Porté(e) disparu(e)";
+    }
+    for (var ijou of list) {
+      this.players[ijou].win = "Perdant";
+    }
+    for(var ifoll2 of followers){
+      if(this.players[this.players[ifoll2].following].points<=0){
+        this.players[ifoll2].points=0;
+      }
+    }
+
+    if (survivors.length == 0) {
+      for (var isherl of sherlocks) {
+        this.players[isherl].points = 0;
+      }
+      if (rogues.length > 0) {
+        max_point = -1;
+        index_max = [];
+        for (var irog of rogues) {
+          if (this.players[irog].points > max_point) {
+            index_max = [irog];
+            max_point = this.players[irog].points;
+          }
+          if (this.players[irog].points = max_point) {
+            index_max.push(irog);
+          }
+        }
+        for (var irog2 of index_max) {
+          this.players[irog2].win = "Vainqueur";
+        }
+        return true;
+      }
+    }
+
+    max_point = -1;
+    index_max = [];
+    for (var irog3 of rogues) {
+      if (this.players[irog3].points > max_point) {
+        index_max = [irog3];
+        max_point = this.players[irog3].points;
+      }
+      if (this.players[irog3].points = max_point) {
+        index_max.push(irog3);
+      }
+
+    }
+    if (max_point >= 15) {
+      for (var irog4 of index_max) {
+        this.players[irog4].win = "Vainqueur";
+      }
+      return true;
+    }
+
+    max_point = -1;
+    index_max = [];
+    for (var itrai of traitors) {
+      if (this.players[itrai].points > max_point) {
+        index_max = [itrai];
+        max_point = this.players[itrai].points;
+      }
+      if (this.players[itrai].points = max_point) {
+        index_max.push(itrai);
+      }
+
+    }
+    if (max_point >= this.goal || traitors.length + followers.length == list.length) {
+      for (var itrai2 of index_max) {
+        this.players[itrai2].win = "Vainqueur";
+      }
+      for (var ifoll of followers) {
+        if (index_max.indexOf(this.players[ifoll].following) > -1) {
+          this.players[ifoll].win = "Vainqueur";
+        }
+      }
+      return true;
+    }
+
+    if (survivors.length > 0) {
+      var vict_surviv = true;
+      for (var isurv of survivors) {
+        if (this.players[isurv].points < this.goal) {
+          vict_surviv = false;
+        }
+      }
+      for (var isherl2 of sherlocks) {
+        if (this.players[isherl2].points < this.goal) {
+          vict_surviv = false;
+        }
+      }
+      if (vict_surviv) {
+        for (var isurv2 of survivors) {
+          this.players[isurv2].win = "Vainqueur";
+        }
+        for (var isherl3 of sherlocks) {
+          this.players[isherl3].win = "Vainqueur";
+        }
+        return true;
+      }
+      if(survivors.length+sherlocks.length==list.length){
+        for (var isurv3 of survivors) {
+          this.players[isurv3].win = "Vainqueur";
+        }
+        for (var isherl4 of sherlocks) {
+          this.players[isherl4].win = "Vainqueur";
+        }
+        return true;
+      }
+    }
+    return false;
+
   }
 
 

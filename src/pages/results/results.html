@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>
+      Resultats
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-item *ngFor="let joueur of moteur.players">
+    <ion-row>
+      <ion-col>
+        <h2>{{joueur.pseudo}}</h2>
+      </ion-col>
+      <ion-col>
+        <h2>{{joueur.etat}}</h2>
+      </ion-col>
+      <ion-col>
+        <h2>{{joueur.points}}</h2>
+      </ion-col>
+      <ion-col>
+        <h2>{{joueur.win}}</h2>
+      </ion-col>
+
+    </ion-row>
+  </ion-item>
+  <div text-center>
+    <button ion-button round>Retour</button>
+  </div>
+
+
+</ion-content>

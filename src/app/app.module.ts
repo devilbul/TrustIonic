@@ -4,7 +4,6 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 
-import { AboutPage } from '../pages/about/about';
 import { ChangePage } from '../pages/change/change';
 import { HomePage } from '../pages/home/home';
 import { NewGamePage } from '../pages/new-game/new-game';
@@ -24,6 +23,7 @@ import { MoteurProvider } from '../providers/moteur/moteur';
 import { VChangeSPage } from '../pages/VchangeS/VchangeS';
 import { VotePage } from '../pages/vote/vote';
 import { BilanPage } from '../pages/bilan/bilan';
+import { ResultsPage } from '../pages/results/results';
 
 
 
@@ -32,7 +32,6 @@ import { BilanPage } from '../pages/bilan/bilan';
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
     ChangePage,
     HomePage,
     TabsPage,
@@ -43,6 +42,7 @@ import { BilanPage } from '../pages/bilan/bilan';
     VChangeSPage,
     VotePage,
     BilanPage,
+    ResultsPage,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +53,6 @@ import { BilanPage } from '../pages/bilan/bilan';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
     ChangePage,
     HomePage,
     TabsPage,
@@ -63,7 +62,8 @@ import { BilanPage } from '../pages/bilan/bilan';
     DebatePage,
     VChangeSPage,
     VotePage,
-    BilanPage
+    BilanPage,
+    ResultsPage,
   ],
   providers: [
     StatusBar,

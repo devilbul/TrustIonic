@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
+    <ion-title text-center>
       Event
     </ion-title>
   </ion-navbar>
@@ -27,6 +27,9 @@
   <div *ngIf='moteur.players[moteur.round[moteur.index_round][0]].etat=="rogue"'>
     <br>
     <h1 text-center>Assassin: choisissez votre cible</h1>
+    <div text-center>
+      <button ion-button round (click)=GoToChange()>Ne cibler personne</button>
+    </div>
     <ion-item *ngFor="let joueur of moteur.players">
       <ion-row>
         <ion-col>
@@ -51,15 +54,15 @@
   <div *ngIf='moteur.players[moteur.round[moteur.index_round][0]].etat=="sherlock"'>
     <br>
     <h1 text-center>Détective: Avez vous un suspect?</h1>
+    <div text-center>
+      <button ion-button round (click)=GoToChange()>Ne cibler personne</button>
+    </div>
     <ion-item>
       <ion-item *ngFor="let joueur of moteur.players">
         <ion-row>
           <h2 text-center>{{joueur.pseudo}}</h2>
         </ion-row>
         <ion-row text-center>
-          <ion-col>
-            <button ion-button round (click)="Detective('survivor',joueur)">Survivant</button>
-          </ion-col>
           <ion-col>
             <button ion-button round (click)="Detective('traitor',joueur)">Traître</button>
           </ion-col>
