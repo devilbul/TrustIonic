@@ -25,10 +25,28 @@
   </ion-item>
 
   <ion-item text-center *ngFor="let joueur of moteur.players" class="monItem">
-    <div class="foo">
-      <div class="over"></div>
-      <img width="200" height="150" class="centered-and-cropped" [src]=joueur.image>
+
+    <div *ngIf="idWin(joueur.win)===3">
+      <div class="foo">
+        <div class="overMiss"></div>
+        <img width="200" height="150" class="centered-and-cropped" [src]=joueur.image>
+      </div>
     </div>
+
+    <div *ngIf="idWin(joueur.win)===2">
+      <div class="foo">
+        <div class="overLosser"></div>
+        <img width="200" height="150" class="centered-and-cropped" [src]=joueur.image>
+      </div>
+    </div>
+
+    <div *ngIf="idWin(joueur.win)===1">
+      <div class="foo">
+        <div class="overWinner"></div>
+        <img width="200" height="150" class="centered-and-cropped" [src]=joueur.image>
+      </div>
+    </div>
+
   </ion-item>
 
   <div text-center>
