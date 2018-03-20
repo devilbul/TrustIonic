@@ -18,6 +18,7 @@ export class EventPage {
   GoToChange() {
     if (this.moteur.index_round >= this.moteur.round.length-1) {
       this.moteur.GenerateBattles();
+      this.moteur.index_battles = [0, 0];
       this.navCtrl.setRoot(DebatePage);
 
     }
