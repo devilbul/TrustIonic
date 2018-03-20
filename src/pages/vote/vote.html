@@ -19,9 +19,9 @@
         <h1>{{moteur.players[moteur.battles[moteur.index_battles[0]][1]].pseudo}}</h1>
       </div>
       <ion-item text-center>
-        <ion-avatar ion-row class="avatar2">
-          <img [src]=moteur.players[moteur.battles[moteur.index_battles[0]][1]].image>
-        </ion-avatar>
+
+          <img width="150" height="150" class="centered-and-cropped" [src]=moteur.players[moteur.battles[moteur.index_battles[0]][1]].image>
+
       </ion-item>
     </div>
     <div *ngIf="moteur.battles[moteur.index_battles[0]][1]==moteur.ID_DUO">
@@ -31,9 +31,9 @@
             <h1>{{moteur.players[moteur.duo[0]].pseudo}}</h1>
           </div>
           <ion-item text-center>
-            <ion-avatar ion-row class="avatar2">
-              <img [src]=moteur.players[moteur.duo[0]].image>
-            </ion-avatar>
+
+              <img width="100" height="100" class="centered-and-cropped" [src]=moteur.players[moteur.duo[0]].image>
+
           </ion-item>
         </ion-col>
         <ion-col>
@@ -41,9 +41,9 @@
             <h1>{{moteur.players[moteur.duo[1]].pseudo}}</h1>
           </div>
           <ion-item text-center>
-            <ion-avatar ion-row class="avatar2">
-              <img [src]=moteur.players[moteur.duo[1]].image>
-            </ion-avatar>
+
+              <img width="100" height="100" class="centered-and-cropped" [src]=moteur.players[moteur.duo[1]].image>
+
           </ion-item>
         </ion-col>
       </ion-row>
@@ -55,9 +55,9 @@
       <h1>{{moteur.players[moteur.battles[moteur.index_battles[0]][0]].pseudo}}</h1>
     </div>
     <ion-item text-center>
-      <ion-avatar ion-row class="avatar2">
-        <img [src]=moteur.players[moteur.battles[moteur.index_battles[0]][0]].image>
-      </ion-avatar>
+
+        <img width="150" height="150" class="centered-and-cropped" [src]=moteur.players[moteur.battles[moteur.index_battles[0]][0]].image>
+
     </ion-item>
   </div>
   <ion-grid>

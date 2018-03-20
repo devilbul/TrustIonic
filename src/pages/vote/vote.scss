@@ -6,12 +6,10 @@ page-vote {
         max-width: 150px !important;  //any size
         max-height: 150px !important; //any size
      }
-     .avatar2 img {
-      margin: auto;
-      width:100% !important;
-      height : 100% !important;
-      max-width: 150px !important;  //any size
-      max-height: 150px !important; //any size
-   }
+     .centered-and-cropped {
+
+      object-fit: cover;
+      border-radius:50%;
+    }
 }
 

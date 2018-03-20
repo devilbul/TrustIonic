@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Platform, NavController, NavParams, ToastController } from 'ionic-angular';
-import { AlertController } from 'ionic-angular';
 import { NewGamePage } from '../new-game/new-game';
 
 import { Joueur } from '../../providers/joueur/joueur';
@@ -29,7 +28,7 @@ export class NewPlayerPage {
   form;
 
   constructor(public moteur: MoteurProvider, public navCtrl: NavController, private camera: Camera, private file: File, private filePath: FilePath,
-    public platform: Platform, public toastCtrl: ToastController, public alertCtrl: AlertController, public navParams: NavParams) {
+    public platform: Platform, public toastCtrl: ToastController, public navParams: NavParams) {
 
     this.form = {
       player_img: "assets/imgs/newPlayerAvatar.png",
@@ -45,24 +44,11 @@ export class NewPlayerPage {
         pseudo: form.player_pseudo,
       }
       this.moteur.players.push(new Joueur(newPlayer.pseudo, newPlayer.img));
-      let alert = this.alertCtrl.create({
-        title: 'Félicitation',
-        subTitle: 'Votre joueur a été ajouté',
-        buttons: [
-          {
-            text: 'ok',
-            handler: () => {
-              this.form = {
-                player_id: "", player_img: "", player_pseudo: ""
-              };
-            }
-          }]
-      });
-      alert.present();
+      this.presentToast("Le joueur à été ajouté.");
       this.navCtrl.push(NewGamePage);
     }
     else {
-      this.presentToast("Tu es certe peut être moche, mais j'ai au moins besoin de ton pseudo.");
+      this.presentToast("J'ai au moins besoin de ton pseudo...");
     }
   }
 
@@ -78,7 +64,7 @@ export class NewPlayerPage {
   public takePicture(sourceType) {
     // Create options for the Camera Dialog
     var options = {
-      quality: 100,
+      quality: 50, // <----------- RESOLUTION de l'image
       sourceType: sourceType,
       saveToPhotoAlbum: false,
       correctOrientation: true

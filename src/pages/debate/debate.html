@@ -15,9 +15,12 @@
 
       <ion-col text-center>
         <h2>{{moteur.players[duel[0]].pseudo}}</h2>
-
+        <div *ngIf="duel[1]==moteur.ID_DUO">
+          <img width="75" height="75" class="centered-and-cropped" [src]=moteur.players[duel[0]].image>
+        </div>
+        <div *ngIf="duel[1]!=moteur.ID_DUO">
           <img width="100" height="100" class="centered-and-cropped" [src]=moteur.players[duel[0]].image>
-
+        </div>
         <h1>{{moteur.players[duel[0]].points}}</h1>
       </ion-col>
 
@@ -28,7 +31,7 @@
       <ion-col *ngIf="duel[1]!=moteur.ID_DUO" text-center>
         <h2>{{moteur.players[duel[1]].pseudo}}</h2>
 
-          <img width="100" height="100" class="centered-and-cropped" [src]=moteur.players[duel[1]].image>
+        <img width="100" height="100" class="centered-and-cropped" [src]=moteur.players[duel[1]].image>
 
         <h1>{{moteur.players[duel[1]].points}}</h1>
       </ion-col>
@@ -36,7 +39,7 @@
       <ion-col *ngIf="duel[1]==moteur.ID_DUO" text-center>
         <h2>{{moteur.players[moteur.duo[0]].pseudo}}</h2>
 
-          <img width="100" height="100" class="centered-and-cropped" [src]=moteur.players[moteur.duo[0]].image>
+        <img width="75" height="75" class="centered-and-cropped" [src]=moteur.players[moteur.duo[0]].image>
 
         <h1>{{moteur.players[moteur.duo[0]].points}}</h1>
       </ion-col>
@@ -44,7 +47,7 @@
       <ion-col *ngIf="duel[1]==moteur.ID_DUO" text-center>
         <h2>{{moteur.players[moteur.duo[1]].pseudo}}</h2>
 
-          <img width="100" height="100" class="centered-and-cropped" [src]=moteur.players[moteur.duo[1]].image>
+        <img width="75" height="75" class="centered-and-cropped" [src]=moteur.players[moteur.duo[1]].image>
 
         <h1>{{moteur.players[moteur.duo[1]].points}}</h1>
       </ion-col>
