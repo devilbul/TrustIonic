@@ -18,7 +18,7 @@ export class NewGamePage {
   playerListLength: number;
 
 
-  constructor(public moteur: MoteurProvider, public navCtrl: NavController, public navParams: NavParams, platform: Platform) {
+  constructor(public data: Data, public moteur: MoteurProvider, public navCtrl: NavController, public navParams: NavParams, platform: Platform) {
     let backAction = platform.registerBackButtonAction(() => {
       console.log("second");
       this.navCtrl.pop();
