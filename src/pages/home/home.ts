@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController } from 'ionic-angular';
+import { NavController, ToastController, Platform } from 'ionic-angular';
 
 import { Storage } from '@ionic/storage';
 
@@ -17,7 +17,7 @@ export class HomePage {
 
 
 
-  constructor(public toastCtrl: ToastController, public moteur: MoteurProvider, private storage: Storage, public navCtrl: NavController) {
+  constructor(public toastCtrl: ToastController, public moteur: MoteurProvider, private storage: Storage, public navCtrl: NavController, platform: Platform) {
     platform.registerBackButtonAction(() => {
       console.log("backPressed 1");
     },1);
