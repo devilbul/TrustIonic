@@ -8,6 +8,7 @@ import { HallOfFamePage } from '../hall-of-fame/hall-of-fame';
 
 import { MoteurProvider } from '../../providers/moteur/moteur';
 import { BilanPage } from '../bilan/bilan';
+import { ChangePage } from '../change/change';
 
 @Component({
   selector: 'page-home',
@@ -54,7 +55,7 @@ export class HomePage {
       this.moteur.betray_reward = val[10];
       this.moteur.betray_penalty = val[11];
       this.moteur.goal = val[12];
-      this.navCtrl.push(BilanPage);}
+      this.navCtrl.push(ChangePage);}
     });
 
   }
