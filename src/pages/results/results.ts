@@ -55,8 +55,8 @@ export class ResultsPage {
   }
 
   idWin(win: string) {
-    if (win === "Perdant") { return 2 }
-    if (win === "Vainqueur") { return 1 }
+    if (win === "Prisonnier à jamais") { return 2 }
+    if (win === "Libre") { return 1 }
     if (win === "Porté(e) disparu(e)") { return 3 }
   }
 }

@@ -7,33 +7,38 @@
 </ion-header>
 
 <ion-content>
-  <ion-item *ngFor="let joueur of moteur.players" class="monItem">
-    <div *ngIf="idWin(joueur.win)===3">
-      <div class="foo">
-        <div class="overMiss"></div>
-        <img width="200" height="150" class="centered-and-cropped" [src]=joueur.image>
-      </div>
-    </div>
 
-    <div *ngIf="idWin(joueur.win)===2">
-      <div class="foo">
-        <div class="overLosser"></div>
-        <img width="200" height="150" class="centered-and-cropped" [src]=joueur.image>
-      </div>
-    </div>
 
-    <div *ngIf="idWin(joueur.win)===1">
-      <div class="foo">
-        <div class="overWinner"></div>
-        <img width="200" height="150" class="centered-and-cropped" [src]=joueur.image>
-      </div>
-    </div>
+    <ion-grid>
+      <ion-row *ngFor="let joueur of moteur.players" class="monItem">
+        <ion-col col-8>
+          <div *ngIf="idWin(joueur.win)===3">
+            <div class="foo">
+              <div class="overMiss"></div>
+              <img width="200" height="150" class="centered-and-cropped" [src]=joueur.image>
+            </div>
+          </div>
 
-    <div item-end>
-      <p>{{joueur.pseudo}} était un {{joueur.etat}} qui a atteint {{joueur.points}} point(s) et est un {{joueur.win}} !</p>
-    </div>
+          <div *ngIf="idWin(joueur.win)===2">
+            <div class="foo">
+              <div class="overLosser"></div>
+              <img width="200" height="150" class="centered-and-cropped" [src]=joueur.image>
+            </div>
+          </div>
 
-  </ion-item>
+          <div *ngIf="idWin(joueur.win)===1">
+            <div class="foo">
+              <div class="overWinner"></div>
+              <img width="200" height="150" class="centered-and-cropped" [src]=joueur.image>
+            </div>
+          </div>
+        </ion-col>
+        <ion-col col-4>
+          <p><b>{{joueur.pseudo}}</b> était un(e) <b>{{joueur.Role()}}</b> ! Il/Elle est maintenant <b>{{joueur.win}}</b> après avoir accumulé {{joueur.points}} point(s).</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
 
 
   <div text-center>

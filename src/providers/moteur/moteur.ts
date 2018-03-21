@@ -390,7 +390,7 @@ export class MoteurProvider {
       joueur.win = "Porté(e) disparu(e)";
     }
     for (var ijou of list) {
-      this.players[ijou].win = "Perdant";
+      this.players[ijou].win = "Prisonnier à jamais";
     }
     for(var ifoll2 of followers){
       if(this.players[this.players[ifoll2].following].points<=0){
@@ -415,7 +415,7 @@ export class MoteurProvider {
           }
         }
         for (var irog2 of index_max) {
-          this.players[irog2].win = "Vainqueur";
+          this.players[irog2].win = "Libre";
         }
         return true;
       }
@@ -435,7 +435,7 @@ export class MoteurProvider {
     }
     if (max_point >= 15) {
       for (var irog4 of index_max) {
-        this.players[irog4].win = "Vainqueur";
+        this.players[irog4].win = "Libre";
       }
       return true;
     }
@@ -454,11 +454,11 @@ export class MoteurProvider {
     }
     if (max_point >= this.goal || traitors.length + followers.length == list.length) {
       for (var itrai2 of index_max) {
-        this.players[itrai2].win = "Vainqueur";
+        this.players[itrai2].win = "Libre";
       }
       for (var ifoll of followers) {
         if (index_max.indexOf(this.players[ifoll].following) > -1) {
-          this.players[ifoll].win = "Vainqueur";
+          this.players[ifoll].win = "Libre";
         }
       }
       return true;
@@ -478,19 +478,19 @@ export class MoteurProvider {
       }
       if (vict_surviv) {
         for (var isurv2 of survivors) {
-          this.players[isurv2].win = "Vainqueur";
+          this.players[isurv2].win = "Libre";
         }
         for (var isherl3 of sherlocks) {
-          this.players[isherl3].win = "Vainqueur";
+          this.players[isherl3].win = "Libre";
         }
         return true;
       }
       if(survivors.length+sherlocks.length==list.length){
         for (var isurv3 of survivors) {
-          this.players[isurv3].win = "Vainqueur";
+          this.players[isurv3].win = "Libre";
         }
         for (var isherl4 of sherlocks) {
-          this.players[isherl4].win = "Vainqueur";
+          this.players[isherl4].win = "Libre";
         }
         return true;
       }
