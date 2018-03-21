@@ -10,7 +10,7 @@ import { Joueur } from '../../providers/joueur/joueur';
 export class MoteurProvider {
   round: any = [];//Liste des events ayant lieu dans ce tour et des joueurs associés
   battles: any[] = [];//Liste des duel de joueurs
-  duo: number[] = [0, 1];//Duo de joueur devant joueur ensemble lors d'un tour
+  duo: number[] = [0, 1];//Duo de joueur devant jouer ensemble lors d'un tour
 
   ID_DUO: number = 10;
 

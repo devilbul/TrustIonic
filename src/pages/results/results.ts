@@ -44,6 +44,13 @@ export class ResultsPage {
   }
 
   home() {
+    this.moteur.round = []; this.moteur.battles = []; this.moteur.duo = [0, 1];
+    this.moteur.ID_DUO = 10; this.moteur.event_list = []; this.moteur.index_round = 0;
+    this.moteur.index_battles = [1, 1]; this.moteur.ally_reward = 2; this.moteur.tie = 0;
+    this.moteur.betray_reward = 3; this.moteur.betray_penalty = -1; this.moteur.goal = 10;
+    for(var i of this.moteur.players){
+      i.reset();
+    }
     this.navCtrl.setRoot(HomePage);
   }
 

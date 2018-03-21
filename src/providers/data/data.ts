@@ -10,41 +10,21 @@ import 'rxjs/add/observable/fromPromise';
 
 @Injectable()
 export class Data {
-  playerList: any;
-  constructor(public http: HttpClient, public storage: Storage) {
-    this.http = http;
-    this.playerList = [];
+
+  urlList: string[];
+
+  constructor(public storage: Storage) {
+    this.urlList = [];
+
   }
 
-  getPlayerList(): Observable<any>{
-    if(this.playerList.length == 0) {
-      return Observable.fromPromise(this.storage.get('playerList')).mergeMap( (val: any) => {
-          if(val == null || val.feed == null) {
-            return this.http.get("assets/data.json").pipe(
-              tap( (res: any) => {
-                this.playerList = res.player;
-              })
-            );
-          }
-          else {
-            this.playerList = val.player;
-            return of({ feed:this.playerList });
-          }
-        });
-    }
-    else {
-      return of({ player:this.playerList });
-    }
-    
+  get(){
+    this.storage.get('url').then(val => {
+      this.urlList = val;
+    });
   }
-  
-  addPlayerToList(player) {
-    this.playerList.push(player);
-    this.savePlayerToList();
+
+  save(){
+    this.storage.set('url', this.urlList);
+  }
 }
-
-  savePlayerToList() {
-    this.storage.set('playerList', {"player": this.playerList});
-  }
-
-} 

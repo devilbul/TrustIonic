@@ -1,8 +1,7 @@
 page-results {
 
   .foo {
-   position: absolute;
-   top:0px;
+   position: relative;
 }
 
  .centered-and-cropped {
@@ -25,6 +24,7 @@ page-results {
   z-index: 1;
   width: 200px;
   height: 150px;
+
 }
 
 .overLosser {
@@ -37,7 +37,7 @@ page-results {
 }
 
 .monItem{
-  height: 175px;
+  height: 170px;
 }
 
 }

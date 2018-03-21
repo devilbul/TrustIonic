@@ -4,15 +4,9 @@ import { NavController, NavParams } from 'ionic-angular';
 import { ChangePage } from '../change/change';
 import { NewPlayerPage } from '../new-player/new-player';
 
+import { Data } from '../../providers/data/data';
 import { Joueur } from '../../providers/joueur/joueur';
 import { MoteurProvider } from '../../providers/moteur/moteur';
-
-/**
- * Generated class for the NewGamePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @Component({
   selector: 'page-new-game',
@@ -24,7 +18,7 @@ export class NewGamePage {
   playerListLength: number;
 
 
-  constructor(public moteur: MoteurProvider, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public data: Data, public moteur: MoteurProvider, public navCtrl: NavController, public navParams: NavParams) {
   }
 
 
@@ -39,6 +33,8 @@ export class NewGamePage {
   }
 
   startGame() {
+    this.data.save();
+
     this.moteur.GenerateFirstRound();
     this.moteur.GenerateEvent();
     this.navCtrl.setRoot(ChangePage);

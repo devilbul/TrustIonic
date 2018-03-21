@@ -20,10 +20,6 @@ export class HallOfFamePage {
     });
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad HallOfFamePage');
-  }
-
   resetHall(){
     this.storage.remove('HallOfFame');
     this.navCtrl.setRoot(HallOfFamePage);

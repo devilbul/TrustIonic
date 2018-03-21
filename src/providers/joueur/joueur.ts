@@ -25,6 +25,15 @@ export class Joueur {
   buff: String="";//Si le joueur subbit un effet particulier
   win: String="";
 
+  reset(){
+    this.etat="";
+    this.points=3;
+    this.prev_points=0;
+    this.vote="B";
+    this.buff="";
+    this.win="";
+  }
+
   constructor(pseudo: String, image: String) {
     this.pseudo=pseudo;
     this.image=image;

@@ -7,25 +7,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-item *ngFor="let joueur of moteur.players">
-    <ion-row text-center>
-      <ion-col>
-        <h2>{{joueur.pseudo}}</h2>
-      </ion-col>
-      <ion-col>
-        <h2>{{joueur.etat}}</h2>
-      </ion-col>
-      <ion-col>
-        <h2>{{joueur.points}}</h2>
-      </ion-col>
-      <ion-col>
-        <h2>{{joueur.win}}</h2>
-      </ion-col>
-    </ion-row>
-  </ion-item>
-
-  <ion-item text-center *ngFor="let joueur of moteur.players" class="monItem">
-
+  <ion-item *ngFor="let joueur of moteur.players" class="monItem">
     <div *ngIf="idWin(joueur.win)===3">
       <div class="foo">
         <div class="overMiss"></div>
@@ -47,7 +29,12 @@
       </div>
     </div>
 
+    <div item-end>
+      <p>{{joueur.pseudo}} était un {{joueur.etat}} qui a atteint {{joueur.points}} point(s) et est un {{joueur.win}} !</p>
+    </div>
+
   </ion-item>
+
 
   <div text-center>
     <button ion-button (click)="home()" round>Retour</button>

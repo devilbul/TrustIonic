@@ -5,16 +5,11 @@ import { NewGamePage } from '../new-game/new-game';
 import { Joueur } from '../../providers/joueur/joueur';
 import { MoteurProvider } from '../../providers/moteur/moteur';
 
+import { Data } from '../../providers/data/data';
 import { File } from '@ionic-native/file';
 import { FilePath } from '@ionic-native/file-path';
 import { Camera } from '@ionic-native/camera';
 
-/**
- * Generated class for the NewPlayerPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 declare var cordova: any;
 
@@ -28,7 +23,7 @@ export class NewPlayerPage {
   form;
 
   constructor(public moteur: MoteurProvider, public navCtrl: NavController, private camera: Camera, private file: File, private filePath: FilePath,
-    public platform: Platform, public toastCtrl: ToastController, public navParams: NavParams) {
+    public data: Data, public platform: Platform, public toastCtrl: ToastController, public navParams: NavParams) {
 
     this.form = {
       player_img: "assets/imgs/newPlayerAvatar.png",
@@ -43,6 +38,7 @@ export class NewPlayerPage {
         img: form.player_img,
         pseudo: form.player_pseudo,
       }
+      this.data.urlList.push(newPlayer.img);
       this.moteur.players.push(new Joueur(newPlayer.pseudo, newPlayer.img));
       this.presentToast("Le joueur à été ajouté.");
       this.navCtrl.push(NewGamePage);
