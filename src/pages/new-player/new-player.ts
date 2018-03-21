@@ -22,7 +22,7 @@ export class NewPlayerPage {
 
   form;
 
-  constructor(public moteur: MoteurProvider, public navCtrl: NavController, private camera: Camera, private file: File, private filePath: FilePath,
+  constructor(public data:Data, public moteur: MoteurProvider, public navCtrl: NavController, private camera: Camera, private file: File, private filePath: FilePath,
     public platform: Platform, public toastCtrl: ToastController, public navParams: NavParams) {
     let backAction = platform.registerBackButtonAction(() => {
       console.log("second");

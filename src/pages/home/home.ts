@@ -28,6 +28,9 @@ export class HomePage {
     this.navCtrl.push(HallOfFamePage);
   }
 
+
+
+
   goToOtherPage() {
     this.navCtrl.push(NewGamePage);
   }
