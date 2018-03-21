@@ -25,14 +25,15 @@ export class ResultsPage {
     };
     this.storage.get('HallOfFame').then((val) => {
 
-      if(val == null){
+      if (val == null) {
         this.partie.id = 0;
-        this.parties[0] = this.partie}
+        this.parties[0] = this.partie
+      }
       else {
         this.parties = val;
-        this.partie.id = this.parties.length ;
-        this.parties.push(this.partie);}
-
+        this.partie.id = this.parties.length;
+        this.parties.push(this.partie);
+      }
       this.storage.set('HallOfFame', this.parties);
     });
 

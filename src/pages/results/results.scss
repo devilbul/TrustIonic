@@ -10,7 +10,7 @@ page-results {
 }
 
 .overMiss {
-  background-image: url('../../assets/imgs/miss.png');
+  background-image: url('./../assets/imgs/miss.png');
   position: absolute;
   top:0px;
   z-index: 1;
@@ -19,7 +19,7 @@ page-results {
 }
 
 .overWinner {
-  background-image: url('../../assets/imgs/winner.png');
+  background-image: url('./../assets/imgs/winner.png');
   position: absolute;
   top:0px;
   z-index: 1;
@@ -28,7 +28,7 @@ page-results {
 }
 
 .overLosser {
-  background-image: url('../../assets/imgs/jail2.png');
+  background-image: url('./../assets/imgs/jail2.png');
   position: absolute;
   top:0px;
   z-index: 1;

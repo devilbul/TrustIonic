@@ -28,7 +28,7 @@ export class Joueur {
   constructor(pseudo: String, image: String) {
     this.pseudo=pseudo;
     this.image=image;
-    this.points=3;
+    this.points=9;
   }
 
 }

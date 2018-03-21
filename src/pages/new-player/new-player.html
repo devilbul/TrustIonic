@@ -21,8 +21,8 @@
       <ion-input name="pseudo" [(ngModel)]="form.player_pseudo" type="text"></ion-input>
     </ion-item>
 
-    <ion-item text-center (click)="takePicture()">
-      <img width="150" height="150" class="centered-and-cropped" src={{form.player_img}}>
+    <ion-item text-center>
+      <img (click)="takePicture()" width="150" height="150" class="centered-and-cropped" src={{form.player_img}}>
     </ion-item>
 
     <div padding>
