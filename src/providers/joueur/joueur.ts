@@ -8,6 +8,12 @@ import { Injectable } from '@angular/core';
   and Angular DI.
 */
 
+export class Partie {
+  joueurs: Joueur[];
+  id: number;
+}
+
+
 export class Joueur {
   pseudo: String="Player";
   image: String="";

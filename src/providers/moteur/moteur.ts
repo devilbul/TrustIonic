@@ -31,7 +31,6 @@ export class MoteurProvider {
 
     //this.GenerateJoueurs();
     //this.GenerateFirstRound();
-
     //this.GenerateEvent();
 
     console.log('Hello MoteurProvider Provider');

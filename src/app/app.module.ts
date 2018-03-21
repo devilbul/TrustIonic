@@ -23,6 +23,7 @@ import { VChangeSPage } from '../pages/VchangeS/VchangeS';
 import { VotePage } from '../pages/vote/vote';
 import { BilanPage } from '../pages/bilan/bilan';
 import { ResultsPage } from '../pages/results/results';
+import { HallOfFamePage } from '../pages/hall-of-fame/hall-of-fame';
 
 
 
@@ -41,6 +42,7 @@ import { ResultsPage } from '../pages/results/results';
     VotePage,
     BilanPage,
     ResultsPage,
+    HallOfFamePage
   ],
   imports: [
     BrowserModule,
@@ -61,6 +63,7 @@ import { ResultsPage } from '../pages/results/results';
     VotePage,
     BilanPage,
     ResultsPage,
+    HallOfFamePage
   ],
   providers: [
     StatusBar,
