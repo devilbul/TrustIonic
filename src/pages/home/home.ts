@@ -18,6 +18,9 @@ export class HomePage {
 
 
   constructor(public toastCtrl: ToastController, public moteur: MoteurProvider, private storage: Storage, public navCtrl: NavController) {
+    platform.registerBackButtonAction(() => {
+      console.log("backPressed 1");
+    },1);
   }
 
   goToHall() {

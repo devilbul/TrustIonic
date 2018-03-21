@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Platform } from 'ionic-angular';
 import { MoteurProvider } from '../../providers/moteur/moteur';
 import { ChangePage } from '../../pages/change/change';
 import { VChangeSPage } from '../VchangeS/VchangeS';
@@ -12,7 +12,10 @@ import { Joueur } from '../../providers/joueur/joueur';
 })
 export class EventPage {
 
-  constructor(public navCtrl: NavController, public moteur: MoteurProvider) {
+  constructor(public navCtrl: NavController, public moteur: MoteurProvider, platform: Platform) {
+    platform.registerBackButtonAction(() => {
+      console.log("backPressed 1");
+    }, 1);
 
   }
   GoToChange() {

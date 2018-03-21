@@ -23,7 +23,12 @@ export class NewPlayerPage {
   form;
 
   constructor(public moteur: MoteurProvider, public navCtrl: NavController, private camera: Camera, private file: File, private filePath: FilePath,
-    public data: Data, public platform: Platform, public toastCtrl: ToastController, public navParams: NavParams) {
+    public platform: Platform, public toastCtrl: ToastController, public navParams: NavParams) {
+    let backAction = platform.registerBackButtonAction(() => {
+      console.log("second");
+      this.navCtrl.pop();
+      backAction();
+    }, 3)
 
     this.form = {
       player_img: "assets/imgs/newPlayerAvatar.png",
@@ -60,7 +65,7 @@ export class NewPlayerPage {
   public takePicture(sourceType) {
     // Create options for the Camera Dialog
     var options = {
-      quality: 50, // <----------- RESOLUTION de l'image
+      quality: 10, // <----------- RESOLUTION de l'image
       sourceType: sourceType,
       saveToPhotoAlbum: false,
       correctOrientation: true

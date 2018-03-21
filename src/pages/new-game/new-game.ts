@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, Platform } from 'ionic-angular';
 
 import { ChangePage } from '../change/change';
 import { NewPlayerPage } from '../new-player/new-player';
@@ -18,7 +18,12 @@ export class NewGamePage {
   playerListLength: number;
 
 
-  constructor(public data: Data, public moteur: MoteurProvider, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public moteur: MoteurProvider, public navCtrl: NavController, public navParams: NavParams, platform: Platform) {
+    let backAction = platform.registerBackButtonAction(() => {
+      console.log("second");
+      this.navCtrl.pop();
+      backAction();
+    }, 2)
   }
 
 
@@ -41,7 +46,7 @@ export class NewGamePage {
   }
 
   supp(i: number) {
-    this.moteur.players.splice(i,1);
+    this.moteur.players.splice(i, 1);
   }
 
 
