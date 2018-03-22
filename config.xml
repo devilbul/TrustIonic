@@ -89,4 +89,5 @@
     <plugin name="cordova-plugin-crop" spec="^0.4.0" />
     <engine name="browser" spec="5.0.3" />
     <engine name="android" spec="7.0.0" />
+    <plugin name="org.apache.cordova.plugin.cache" spec="https://github.com/tiltshiftfocus/cordova-plugin-cache.git" />
 </widget>

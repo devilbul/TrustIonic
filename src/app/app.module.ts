@@ -19,7 +19,6 @@ import { Camera } from '@ionic-native/camera';
 import { FilePath } from '@ionic-native/file-path';
 import { File } from '@ionic-native/file';
 import { MoteurProvider } from '../providers/moteur/moteur';
-import {Data} from '../providers/data/data'
 import { VChangeSPage } from '../pages/VchangeS/VchangeS';
 import { VotePage } from '../pages/vote/vote';
 import { BilanPage } from '../pages/bilan/bilan';
@@ -74,7 +73,6 @@ import { HallOfFamePage } from '../pages/hall-of-fame/hall-of-fame';
     FilePath,
     Camera,
     MoteurProvider,
-    Data
   ]
 })
 export class AppModule {}

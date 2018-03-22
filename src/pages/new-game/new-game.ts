@@ -4,9 +4,11 @@ import { NavController, NavParams, Platform } from 'ionic-angular';
 import { ChangePage } from '../change/change';
 import { NewPlayerPage } from '../new-player/new-player';
 
-import { Data } from '../../providers/data/data';
+import { File } from '@ionic-native/file';
 import { Joueur } from '../../providers/joueur/joueur';
 import { MoteurProvider } from '../../providers/moteur/moteur';
+
+declare var cordova: any;
 
 @Component({
   selector: 'page-new-game',
@@ -18,7 +20,7 @@ export class NewGamePage {
   playerListLength: number;
 
 
-  constructor(public data: Data, public moteur: MoteurProvider, public navCtrl: NavController, public navParams: NavParams, platform: Platform) {
+  constructor(private file: File, public moteur: MoteurProvider, public navCtrl: NavController, public navParams: NavParams, platform: Platform) {
     let backAction = platform.registerBackButtonAction(() => {
       console.log("second");
       this.navCtrl.pop();
@@ -38,7 +40,6 @@ export class NewGamePage {
   }
 
   startGame() {
-    this.data.save();
 
     this.moteur.GenerateFirstRound();
     this.moteur.GenerateEvent();
@@ -47,6 +48,7 @@ export class NewGamePage {
 
   supp(i: number) {
     this.moteur.players.splice(i, 1);
+
   }
 
 
