@@ -29,7 +29,7 @@ export class MoteurProvider {
 
   constructor(public http: HttpClient) {
 
-    this.GenerateJoueurs();
+    //this.GenerateJoueurs();
     //this.GenerateFirstRound();
     //this.GenerateEvent();
 
