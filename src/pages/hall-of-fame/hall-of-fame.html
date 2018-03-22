@@ -22,12 +22,9 @@
   <ion-item *ngFor="let partie of hallOf ">
     <p>Partie n°{{partie.id + 1}}</p>
     <ion-grid>
-      <ion-row *ngFor="let joueur of partie['joueurs']">
+      <ion-row *ngFor="let joueur of partie.joueurs">
         <ion-col>
           <h2>{{joueur.pseudo}}</h2>
-        </ion-col>
-        <ion-col>
-          <h2>{{joueur.etat}}</h2>
         </ion-col>
         <ion-col>
           <h2>{{joueur.points}}</h2>
