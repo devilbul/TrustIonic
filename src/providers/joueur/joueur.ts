@@ -42,7 +42,7 @@ export class Joueur {
   Role() {
     switch (this.etat) {
       case "survivor":
-        return "Survivant";
+        return "Innocent";
       case "traitor":
         return "Traître";
       case "follower":

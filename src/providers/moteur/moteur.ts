@@ -60,7 +60,7 @@ export class MoteurProvider {
     var list = this.AliveList();
     this.shuffleArray(list);
     while (list.length > 0) {
-      event = this.Randint(1, 10);
+      event = this.Randint(1, 11);
       check = true;
       for (var i = 0; i < prog; i++) {
         if (this.event_list[event].ban.indexOf(this.round[i][1]) > -1) {
@@ -134,16 +134,16 @@ export class MoteurProvider {
 
   GenerateEvent() {
     /*0*/this.event_list.push(new Event(
-      "Survivant",
-      ["Vous êtes un survivant",
+      "Blanc comme neige",
+      ["Vous êtes un Innocent",
         "Accumulez assez de points et",
-        "enfuyez vous avec les autres survivants"],
-      "http://www.canald.com/polopoly_fs/1.1253794.1371486103!/image/Seul_survivant.jpg_gen/derivatives/cd_796_449/Seul_survivant.jpg",
+        "enfuyez vous avec les autres Innocents"],
+      "https://www.pngarts.com/files/1/Group-PNG-Picture.png",
       []));
 
     /*1*/this.event_list.push(new Event(
-      "Volte-face",
-      ["Vous êtes maintenant un traitre",
+      "Veste retournée",
+      ["Vous êtes maintenant un Traître",
         "Accumulez des points et enfuyez vous seul",
         "Vous ne faites pas équipe avec l’(es) autre(s) traître(s)"],
       "https://gorouadama.files.wordpress.com/2013/09/chaque-ami-moitie-dun-traitre-checked-l-0_m7sy.jpeg",
@@ -158,7 +158,7 @@ export class MoteurProvider {
     /*3*/this.event_list.push(new Event(
       "Regain",
       ["Si vous avez moins de 9 points,",
-        "vous en gagnez un"],
+        "Vous en gagnez un"],
       "https://cdn.shopify.com/s/files/1/1061/1924/products/Thumbs_Up_Hand_Sign_Emoji_large.png?v=1480481047",
       [3, 4]));
 
@@ -175,14 +175,14 @@ export class MoteurProvider {
         "La trahison retire 2 points au joueur trahi",
         "Cela affecte tous les joueurs mais libre à vous de partager ou non cette info"],
       "https://ae01.alicdn.com/kf/HTB10cEIIpXXXXcVXFXXq6xXFXXX8/Dynasty-Warriors-7-Cosplay-Liu-Bei-Armes-p-e-Double.jpg_640x640.jpg",
-      [5, 7]));
+      [5, 7, 11]));
 
     /*6*/this.event_list.push(new Event(
       "A ses crochets",
       ["",
         "Vous ne pouvez vous enfuire que s’il/elle s’enfuit",
         "Vous n’avez plus à accumuler de points",
-        "Vous perdez si les survivants ou un autre traître s’enfuient",
+        "Vous perdez si les Innocents ou un autre traître s’enfuient",
         "Si ce joueur disparait, vous disparaissez avec"],
       "https://pm1.narvii.com/6360/e9f6d7c891cd9ed65c51708048035f876902d302_hq.jpg",
       [6, 1, 9, 10]));
@@ -193,7 +193,7 @@ export class MoteurProvider {
         "Le gain de point en cas d'alliance passe à 3",
         "Cela affecte tous les joueurs mais libre à vous de partager ou non cette info"],
       "https://i0.wp.com/gabonreview.com/wp-content/uploads/cooperation-1.jpg?resize=640%2C463",
-      [7, 5]));
+      [7, 5, 11]));
 
     /*8*/this.event_list.push(new Event(
       "A l'aveugle",
@@ -203,21 +203,29 @@ export class MoteurProvider {
 
     /*9*/this.event_list.push(new Event(
       "Folie Meurtrière",
-      ["Vous êtes maintenant un assassin",
+      ["Vous êtes maintenant un Assassin",
         "Vous pourrez retirer un point à une joueur par tour",
-        "Vous gagnez en atteignant 15 points ou si tous les survivants disparraissent"],
+        "Vous gagnez en atteignant 15 points ou si tous les Innocents disparraissent"],
       "https://secure.i.telegraph.co.uk/multimedia/archive/02382/horror_2382351b.jpg",
       [9, 10, 6, 1]));
 
     /*10*/this.event_list.push(new Event(
       "Elémentaire mon cher",
-      ["Vous êtes maintenant un détective",
+      ["Vous êtes maintenant un Détective",
         "Une fois par tour, vous pourrez tenter de désigner le rôle d’un joueur",
         "Si vous avez raison, ce joueur perdra 3 points, si vous avez tort, c’est vous qui perdrez 3 points",
-        "Vous devez toujours vous enfuir avec les autres survivants",
-        "Vous perdez si tous les survivants disparaissent."],
+        "Vous devez toujours vous enfuir avec les autres Innocents",
+        "Vous disparaissez si tous les Innocents disparaissent."],
       "http://www.divorcemalin.com/wp-content/uploads/2016/02/d%C3%A9tective-priv%C3%A9.jpg",
       [10, 9, 6, 1]));
+
+    /*11*/this.event_list.push(new Event(
+      "Coopération forcée",
+      ["Pour ce tour",
+        "En cas de double trahison, les deux joueurs perdent 1 point",
+        "Cela affecte tous les joueurs mais libre à vous de partager ou non cette info"],
+      "http://www.worknetdupage.org/images/blog/2016-Mar/body-language/crushing-handshake.jpg",
+      [11, 7, 5]));
 
   }
 
@@ -261,7 +269,7 @@ export class MoteurProvider {
         this.shuffleArray(trait_list);
         this.players[id_joueur].etat = "follower";
         this.players[id_joueur].following = trait_list[0];
-        this.event_list[6].description[0] = this.players[trait_list[0]].pseudo + " est un(e) traître, et vous êtes maintenant son suiveur";
+        this.event_list[6].description[0] = this.players[trait_list[0]].pseudo + " est un(e) Traître, et vous êtes maintenant son suiveur";
         break;
 
       case 7://L'union..
@@ -278,6 +286,10 @@ export class MoteurProvider {
 
       case 10://détective
         this.players[id_joueur].etat = "sherlock";
+        break;
+
+      case 11://Coop forcée
+        this.tie = -1;
         break;
 
       default:
@@ -392,9 +404,9 @@ export class MoteurProvider {
     for (var ijou of list) {
       this.players[ijou].win = "Prisonnier à jamais";
     }
-    for(var ifoll2 of followers){
-      if(this.players[this.players[ifoll2].following].points<=0){
-        this.players[ifoll2].points=0;
+    for (var ifoll2 of followers) {
+      if (this.players[this.players[ifoll2].following].points <= 0) {
+        this.players[ifoll2].points = 0;
       }
     }
 
@@ -485,7 +497,7 @@ export class MoteurProvider {
         }
         return true;
       }
-      if(survivors.length+sherlocks.length==list.length){
+      if (survivors.length + sherlocks.length == list.length) {
         for (var isurv3 of survivors) {
           this.players[isurv3].win = "Libre";
         }
