@@ -29,7 +29,7 @@ export class MoteurProvider {
 
   constructor(public http: HttpClient) {
 
-    //this.GenerateJoueurs();
+    this.GenerateJoueurs();
     //this.GenerateFirstRound();
     //this.GenerateEvent();
 
@@ -138,7 +138,7 @@ export class MoteurProvider {
       ["Vous êtes un Innocent",
         "Accumulez 10 points et",
         "enfuyez vous avec les autres Innocents"],
-      "https://www.pngarts.com/files/1/Group-PNG-Picture.png",
+      "assets/imgs/innocent.png",
       []));
 
     /*1*/this.event_list.push(new Event(
@@ -146,27 +146,27 @@ export class MoteurProvider {
       ["Vous êtes maintenant un Traître",
         "Accumulez 10 points et enfuyez vous seul",
         "Vous ne faites pas équipe avec l’(es) autre(s) traître(s)"],
-      "https://gorouadama.files.wordpress.com/2013/09/chaque-ami-moitie-dun-traitre-checked-l-0_m7sy.jpeg",
+      "assets/imgs/traitre.jpeg",
       [1, 6, 9, 10]));
 
     /*2*/this.event_list.push(new Event(
       "Le calme avant la tempête",
       ["Rien à signaler"],
-      "https://upload.wikimedia.org/wikipedia/commons/3/39/Tauchzeichen-Okay-Diving-Sign-Okay.png",
+      "assets/imgs/ras.png",
       []));
 
     /*3*/this.event_list.push(new Event(
       "Regain",
       ["Si vous avez moins de 9 points,",
         "Vous en gagnez un"],
-      "https://cdn.shopify.com/s/files/1/1061/1924/products/Thumbs_Up_Hand_Sign_Emoji_large.png?v=1480481047",
+      "assets/imgs/regain.png",
       [3, 4]));
 
     /*4*/this.event_list.push(new Event(
       "Dépréciation",
       ["Si vous avez plus de 2 points",
         "Vous en perdez un"],
-      "https://cdn.shopify.com/s/files/1/1061/1924/products/Thumbs_Down_Sign_Emoji_Icon_ios10_large.png?v=1513336434",
+      "assets/imgs/down.png",
       [4, 3]));
 
     /*5*/this.event_list.push(new Event(
@@ -174,7 +174,7 @@ export class MoteurProvider {
       ["Pour ce tour",
         "La trahison retire 2 points au joueur trahi",
         "Cela affecte tous les joueurs mais libre à vous de partager ou non cette info"],
-      "https://ae01.alicdn.com/kf/HTB10cEIIpXXXXcVXFXXq6xXFXXX8/Dynasty-Warriors-7-Cosplay-Liu-Bei-Armes-p-e-Double.jpg_640x640.jpg",
+      "assets/imgs/doublePain.jpg",
       [5, 7, 11]));
 
     /*6*/this.event_list.push(new Event(
@@ -184,7 +184,7 @@ export class MoteurProvider {
         "Vous n’avez plus à accumuler de points",
         "Vous perdez si les Innocents ou un autre traître s’enfuient",
         "Si ce joueur disparait, vous disparaissez avec"],
-      "https://pm1.narvii.com/6360/e9f6d7c891cd9ed65c51708048035f876902d302_hq.jpg",
+      "assets/imgs/link.jpg",
       [6, 1, 9, 10]));
 
     /*7*/this.event_list.push(new Event(
@@ -192,13 +192,13 @@ export class MoteurProvider {
       ["Pour ce tour",
         "Le gain de point en cas d'alliance passe à 3",
         "Cela affecte tous les joueurs mais libre à vous de partager ou non cette info"],
-      "https://i0.wp.com/gabonreview.com/wp-content/uploads/cooperation-1.jpg?resize=640%2C463",
+      "assets/imgs/union.jpg",
       [7, 5, 11]));
 
     /*8*/this.event_list.push(new Event(
       "A l'aveugle",
       ["Vous ne pourrez pas choisir ce que vous allez voter lors de votre prochain face à face"],
-      "https://image.freepik.com/free-icon/question-mark_318-52837.jpg",
+      "assets/imgs/random.jpg",
       [8]));
 
     /*9*/this.event_list.push(new Event(
@@ -206,7 +206,7 @@ export class MoteurProvider {
       ["Vous êtes maintenant un Assassin",
         "Vous pourrez retirer un point à une joueur par tour",
         "Vous gagnez en atteignant 15 points ou si tous les Innocents disparraissent"],
-      "https://secure.i.telegraph.co.uk/multimedia/archive/02382/horror_2382351b.jpg",
+      "assets/imgs/assassin.jpg",
       [9, 10, 6, 1]));
 
     /*10*/this.event_list.push(new Event(
@@ -216,7 +216,7 @@ export class MoteurProvider {
         "Si vous avez raison, ce joueur perdra 3 points, si vous avez tort, c’est vous qui perdrez 3 points",
         "Vous devez toujours vous enfuir avec les autres Innocents",
         "Vous disparaissez si tous les Innocents disparaissent."],
-      "http://www.divorcemalin.com/wp-content/uploads/2016/02/d%C3%A9tective-priv%C3%A9.jpg",
+      "assets/imgs/sherlock.jpg",
       [10, 9, 6, 1]));
 
     /*11*/this.event_list.push(new Event(
@@ -224,7 +224,7 @@ export class MoteurProvider {
       ["Pour ce tour",
         "En cas de double trahison, les deux joueurs perdent 1 point",
         "Cela affecte tous les joueurs mais libre à vous de partager ou non cette info"],
-      "http://www.worknetdupage.org/images/blog/2016-Mar/body-language/crushing-handshake.jpg",
+      "assets/imgs/uni.jpg",
       [11, 7, 5]));
 
   }

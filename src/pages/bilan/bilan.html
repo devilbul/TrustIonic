@@ -25,7 +25,7 @@
         <h1 *ngIf='moteur.players[moteur.battles[index][0]].vote=="B"'>Trahison</h1>
 
         <h1>{{moteur.players[moteur.battles[index][0]].prev_points}}</h1>
-        <img class="fleche" src="https://cdn.pixabay.com/photo/2016/03/31/18/34/arrow-1294465__340.png">
+        <img class="fleche" src="assets/imgs/arrow.png">
         <h1>{{moteur.players[moteur.battles[index][0]].points}}</h1>
       </ion-col>
       <ion-col text-center *ngIf="moteur.battles[index][1]!=moteur.ID_DUO">
@@ -41,7 +41,7 @@
         <h1 *ngIf='moteur.players[moteur.battles[index][1]].vote=="B"'>Trahison</h1>
 
         <h1>{{moteur.players[moteur.battles[index][1]].prev_points}}</h1>
-        <img class="fleche" src="https://cdn.pixabay.com/photo/2016/03/31/18/34/arrow-1294465__340.png">
+        <img class="fleche" src="assets/imgs/arrow.png">
         <h1>{{moteur.players[moteur.battles[index][1]].points}}</h1>
       </ion-col>
       <ion-col text-center *ngIf="moteur.battles[index][1]==moteur.ID_DUO">
@@ -57,7 +57,7 @@
         <h1 *ngIf='moteur.players[moteur.duo[0]].vote=="B"'>Trahison</h1>
 
         <h1>{{moteur.players[moteur.duo[0]].prev_points}}</h1>
-        <img class="fleche" src="https://cdn.pixabay.com/photo/2016/03/31/18/34/arrow-1294465__340.png">
+        <img class="fleche" src="assets/imgs/arrow.png">
         <h1>{{moteur.players[moteur.duo[0]].points}}</h1>
       </ion-col>
       <ion-col text-center *ngIf="moteur.battles[index][1]==moteur.ID_DUO">
@@ -73,7 +73,7 @@
         <h1 *ngIf='moteur.players[moteur.duo[1]].vote=="B"'>Trahison</h1>
 
         <h1>{{moteur.players[moteur.duo[1]].prev_points}}</h1>
-        <img class="fleche" src="https://cdn.pixabay.com/photo/2016/03/31/18/34/arrow-1294465__340.png">
+        <img class="fleche" src="assets/imgs/arrow.png">
         <h1>{{moteur.players[moteur.duo[1]].points}}</h1>
       </ion-col>
 
