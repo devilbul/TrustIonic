@@ -10,6 +10,7 @@
 </ion-header>
 
 <ion-content>
+    <p *ngIf="hidevalue==false"> {{maxTime}}</p>
   <ion-item *ngFor="let duel of moteur.battles">
     <ion-row>
 

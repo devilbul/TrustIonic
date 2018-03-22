@@ -24,6 +24,7 @@ import { VotePage } from '../pages/vote/vote';
 import { BilanPage } from '../pages/bilan/bilan';
 import { ResultsPage } from '../pages/results/results';
 import { HallOfFamePage } from '../pages/hall-of-fame/hall-of-fame';
+import { RegleMenuPage } from '../pages/regleMenu/regleMenu';
 
 
 
@@ -42,7 +43,8 @@ import { HallOfFamePage } from '../pages/hall-of-fame/hall-of-fame';
     VotePage,
     BilanPage,
     ResultsPage,
-    HallOfFamePage
+    HallOfFamePage,
+    RegleMenuPage,
   ],
   imports: [
     BrowserModule,
@@ -63,7 +65,8 @@ import { HallOfFamePage } from '../pages/hall-of-fame/hall-of-fame';
     VotePage,
     BilanPage,
     ResultsPage,
-    HallOfFamePage
+    HallOfFamePage,
+    RegleMenuPage
   ],
   providers: [
     StatusBar,

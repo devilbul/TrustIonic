@@ -21,8 +21,8 @@
 
   <ion-item *ngFor="let partie of hallOf ">
     <p>Partie n°{{partie.id + 1}}</p>
-    <div *ngFor="let joueur of partie['joueurs']">
-      <ion-row text-center>
+    <ion-grid>
+      <ion-row *ngFor="let joueur of partie['joueurs']">
         <ion-col>
           <h2>{{joueur.pseudo}}</h2>
         </ion-col>
@@ -36,7 +36,7 @@
           <h2>{{joueur.win}}</h2>
         </ion-col>
       </ion-row>
-    </div>
+    </ion-grid>
   </ion-item>
 
   <div padding>

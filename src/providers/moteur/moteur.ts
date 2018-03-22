@@ -136,7 +136,7 @@ export class MoteurProvider {
     /*0*/this.event_list.push(new Event(
       "Blanc comme neige",
       ["Vous êtes un Innocent",
-        "Accumulez assez de points et",
+        "Accumulez 10 points et",
         "enfuyez vous avec les autres Innocents"],
       "https://www.pngarts.com/files/1/Group-PNG-Picture.png",
       []));
@@ -144,7 +144,7 @@ export class MoteurProvider {
     /*1*/this.event_list.push(new Event(
       "Veste retournée",
       ["Vous êtes maintenant un Traître",
-        "Accumulez des points et enfuyez vous seul",
+        "Accumulez 10 points et enfuyez vous seul",
         "Vous ne faites pas équipe avec l’(es) autre(s) traître(s)"],
       "https://gorouadama.files.wordpress.com/2013/09/chaque-ami-moitie-dun-traitre-checked-l-0_m7sy.jpeg",
       [1, 6, 9, 10]));

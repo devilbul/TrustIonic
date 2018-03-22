@@ -9,6 +9,7 @@ import { HallOfFamePage } from '../hall-of-fame/hall-of-fame';
 import { MoteurProvider } from '../../providers/moteur/moteur';
 import { BilanPage } from '../bilan/bilan';
 import { ChangePage } from '../change/change';
+import { RegleMenuPage } from '../regleMenu/regleMenu';
 
 @Component({
   selector: 'page-home',
@@ -34,6 +35,10 @@ export class HomePage {
 
   goToOtherPage() {
     this.navCtrl.push(NewGamePage);
+  }
+
+  goToRules() {
+    this.navCtrl.push(RegleMenuPage);
   }
 
   continuer() {
