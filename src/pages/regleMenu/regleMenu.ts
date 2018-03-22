@@ -3,10 +3,9 @@ import { NavController, NavParams, Platform } from 'ionic-angular';
 
 import { ChangePage } from '../change/change';
 import { NewPlayerPage } from '../new-player/new-player';
-
-import { Joueur } from '../../providers/joueur/joueur';
-import { MoteurProvider } from '../../providers/moteur/moteur';
 import { RegleGeneralPage } from '../regleGeneral/RegleGeneral';
+
+import { MoteurProvider } from '../../providers/moteur/moteur';
 import { RegleRolePage } from '../regleRole/regleRole';
 
 @Component({
@@ -15,11 +14,7 @@ import { RegleRolePage } from '../regleRole/regleRole';
 })
 export class RegleMenuPage {
 
-  playerList: Joueur[];
-  playerListLength: number;
-
-
-  constructor(public moteur: MoteurProvider, public navCtrl: NavController, public navParams: NavParams, platform: Platform) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, platform: Platform) {
     let backAction = platform.registerBackButtonAction(() => {
       console.log("second");
       this.navCtrl.pop();
@@ -29,10 +24,6 @@ export class RegleMenuPage {
 
   GotoRegles() {
     this.navCtrl.push(RegleGeneralPage);
-  }
-
-  GotoEvents() {
-
   }
 
   GotoRoles() {

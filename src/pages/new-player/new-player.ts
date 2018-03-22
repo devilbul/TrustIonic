@@ -5,8 +5,6 @@ import { NewGamePage } from '../new-game/new-game';
 import { Joueur } from '../../providers/joueur/joueur';
 import { MoteurProvider } from '../../providers/moteur/moteur';
 
-import { File } from '@ionic-native/file';
-import { FilePath } from '@ionic-native/file-path';
 import { Camera } from '@ionic-native/camera';
 
 
@@ -21,7 +19,7 @@ export class NewPlayerPage {
 
   form;
 
-  constructor(public moteur: MoteurProvider, public navCtrl: NavController, private camera: Camera, private file: File, private filePath: FilePath,
+  constructor(public moteur: MoteurProvider, public navCtrl: NavController, private camera: Camera,
     public platform: Platform, public toastCtrl: ToastController, public navParams: NavParams) {
     let backAction = platform.registerBackButtonAction(() => {
       console.log("second");
@@ -72,7 +70,6 @@ export class NewPlayerPage {
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
     };
-
     // Get the data of an image
     this.camera.getPicture(options).then((imageData) => {
       this.form.player_img = imageData;

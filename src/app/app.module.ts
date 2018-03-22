@@ -10,15 +10,6 @@ import { NewGamePage } from '../pages/new-game/new-game';
 import { NewPlayerPage } from '../pages/new-player/new-player';
 import { EventPage } from '../pages/event/event';
 import { DebatePage } from '../pages/debate/debate';
-
-import { StatusBar } from '@ionic-native/status-bar';
-import { IonicStorageModule } from '@ionic/storage';
-import { SplashScreen } from '@ionic-native/splash-screen';
-
-import { Camera } from '@ionic-native/camera';
-import { FilePath } from '@ionic-native/file-path';
-import { File } from '@ionic-native/file';
-import { MoteurProvider } from '../providers/moteur/moteur';
 import { VChangeSPage } from '../pages/VchangeS/VchangeS';
 import { VotePage } from '../pages/vote/vote';
 import { BilanPage } from '../pages/bilan/bilan';
@@ -28,9 +19,13 @@ import { RegleMenuPage } from '../pages/regleMenu/regleMenu';
 import { RegleGeneralPage } from '../pages/regleGeneral/RegleGeneral';
 import { RegleRolePage } from '../pages/regleRole/regleRole';
 
-
-
-//import { JoueurProvider } from '../providers/joueur/joueur';
+import { StatusBar } from '@ionic-native/status-bar';
+import { IonicStorageModule } from '@ionic/storage';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { Camera } from '@ionic-native/camera';
+import { FilePath } from '@ionic-native/file-path';
+import { File } from '@ionic-native/file';
+import { MoteurProvider } from '../providers/moteur/moteur';
 
 @NgModule({
   declarations: [
@@ -48,7 +43,7 @@ import { RegleRolePage } from '../pages/regleRole/regleRole';
     HallOfFamePage,
     RegleMenuPage,
     RegleGeneralPage,
-    RegleRolePage,
+    RegleRolePage
   ],
   imports: [
     BrowserModule,
@@ -81,7 +76,7 @@ import { RegleRolePage } from '../pages/regleRole/regleRole';
     File,
     FilePath,
     Camera,
-    MoteurProvider,
+    MoteurProvider
   ]
 })
 export class AppModule {}

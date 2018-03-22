@@ -9,7 +9,6 @@ export class Event{
     this.title=title;
     this.image=image;
     this.ban=ban;
-
   }
 
 }

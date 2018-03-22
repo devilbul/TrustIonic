@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { EventPage } from '../event/event';
+
 import { MoteurProvider } from '../../providers/moteur/moteur';
-import { ChangePage } from '../change/change';
+
 import { VChangeSPage } from '../VchangeS/VchangeS';
 import { BilanPage } from '../bilan/bilan';
 
@@ -13,8 +14,6 @@ import { BilanPage } from '../bilan/bilan';
 export class VotePage {
 
   constructor(public navCtrl: NavController, public moteur: MoteurProvider) {
-
-
   }
 
   ionViewDidEnter() {
@@ -31,6 +30,7 @@ export class VotePage {
     }
     this.Next();
   }
+
   Betray() {
     if (this.moteur.battles[this.moteur.index_battles[0]][this.moteur.index_battles[1]] == this.moteur.ID_DUO) {
       this.moteur.players[this.moteur.duo[0]].vote = "B";
@@ -41,6 +41,7 @@ export class VotePage {
     }
     this.Next();
   }
+
   Random() {
     var rand = this.moteur.Randint(0, 1);
     if (rand == 0) {
@@ -52,8 +53,9 @@ export class VotePage {
     this.moteur.players[this.moteur.battles[this.moteur.index_battles[0]][this.moteur.index_battles[1]]].buff = "";
     this.Next();
   }
+
   Next() {
-    this.allow_change=false;
+    this.allow_change = false;
     if (this.moteur.index_battles[0] >= this.moteur.battles.length - 1 && this.moteur.index_battles[1] == 1) {
       this.moteur.DoBattles();
       this.navCtrl.setRoot(BilanPage);
@@ -83,17 +85,14 @@ export class VotePage {
     this.timer = setTimeout(x => {
       if (this.maxTime <= 0) { }
       this.maxTime -= 1;
-
       if (this.maxTime > 0) {
         this.hidevalue = false;
         this.StartTimer();
       }
-
       else {
         if (this.allow_change) {
           this.Ally();
         }
-
       }
     }, 1000);
   }

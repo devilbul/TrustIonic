@@ -19,7 +19,6 @@ export class NewGamePage {
   playerList: Joueur[];
   playerListLength: number;
 
-
   constructor(private file: File, public moteur: MoteurProvider, public navCtrl: NavController, public navParams: NavParams, platform: Platform) {
     let backAction = platform.registerBackButtonAction(() => {
       console.log("second");
@@ -27,7 +26,6 @@ export class NewGamePage {
       backAction();
     }, 2)
   }
-
 
   ionViewDidLoad() {
     this.playerList = this.moteur.players;
@@ -40,7 +38,6 @@ export class NewGamePage {
   }
 
   startGame() {
-
     this.moteur.GenerateFirstRound();
     this.moteur.GenerateEvent();
     this.navCtrl.setRoot(ChangePage);
@@ -48,8 +45,6 @@ export class NewGamePage {
 
   supp(i: number) {
     this.moteur.players.splice(i, 1);
-
   }
-
 
 }

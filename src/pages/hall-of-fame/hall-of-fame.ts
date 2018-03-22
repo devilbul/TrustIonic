@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 import { HomePage } from '../home/home';
-import { Joueur, Partie } from '../../providers/joueur/joueur';
+import { Partie } from '../../providers/joueur/joueur';
 
 @Component({
   selector: 'page-hall-of-fame',
@@ -20,7 +20,7 @@ export class HallOfFamePage {
     });
   }
 
-  resetHall(){
+  resetHall() {
     this.storage.remove('HallOfFame');
     this.navCtrl.setRoot(HallOfFamePage);
   }

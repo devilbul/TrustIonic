@@ -36,11 +36,6 @@ export class ResultsPage {
       }
       this.storage.set('HallOfFame', this.parties);
     });
-
-  }
-
-  ionViewDidLoad() {
-
   }
 
   home() {

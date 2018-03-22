@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { MoteurProvider } from '../../providers/moteur/moteur';
 import { ChangePage } from '../../pages/change/change';
-import { VChangeSPage } from '../VchangeS/VchangeS';
 import { ResultsPage } from '../results/results';
 
 import { Storage } from '@ionic/storage';
@@ -16,11 +15,6 @@ export class BilanPage {
   index: number = 0;
 
   constructor(private storage: Storage, public navCtrl: NavController, public moteur: MoteurProvider) {
-
-  }
-
-  ionViewDidLoad() {
-
   }
 
   Ready() {
@@ -47,9 +41,9 @@ export class BilanPage {
       this.index -= 1;
     }
   }
+
   Next() {
     this.index = (this.index + 1) % this.moteur.battles.length;
   }
-
 
 }

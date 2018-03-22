@@ -37,7 +37,7 @@ export class Joueur {
   constructor(pseudo: String, image: String) {
     this.pseudo = pseudo;
     this.image = image;
-    this.points = 9;
+    this.points = 3;
   }
   Role() {
     switch (this.etat) {
