@@ -21,7 +21,7 @@ export class DebatePage {
     this.navCtrl.setRoot(VChangeSPage);
   }
 
-  maxTime: any=120;
+  maxTime: any=120000000;
   timer: any;
   hidevalue: boolean;
 
@@ -35,11 +35,9 @@ export class DebatePage {
             this.hidevalue = false;
             this.StartTimer();
           }
-
           else{
-              this.hidevalue = true;
+              this.Ready();
           }
-
       }, 1000);
     }
 
