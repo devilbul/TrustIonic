@@ -1,16 +1,10 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title text-center>
-      Discutez avant
-    </ion-title>
-    <ion-title text-center>
-      de prendre une décision
-    </ion-title>
-  </ion-navbar>
-</ion-header>
-
 <ion-content>
-    <p *ngIf="hidevalue==false"> {{maxTime}}</p>
+
+  <ion-item text-center padding>
+    <h1>Discutez avant</h1>
+    <h1>de prendre une décision !</h1>
+  </ion-item>
+
   <ion-item *ngFor="let duel of moteur.battles">
     <ion-row>
 
@@ -52,15 +46,14 @@
 
         <h1>{{moteur.players[moteur.duo[1]].points}}</h1>
       </ion-col>
-
-
-
-
     </ion-row>
   </ion-item>
+
   <div text-center>
     <button ion-button round (click)=Ready()>Prêts</button>
   </div>
+
+  <p text-center *ngIf="hidevalue==false"> <FONT size="20pt"><B>{{maxTime}}</B></FONT></p>
 
 
 </ion-content>
