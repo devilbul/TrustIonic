@@ -64,10 +64,10 @@
     <div *ngIf="moteur.battles[this.moteur.index_battles[0]][moteur.index_battles[1]]!=moteur.ID_DUO">
       <ion-row *ngIf='moteur.players[moteur.battles[this.moteur.index_battles[0]][moteur.index_battles[1]]].buff!="blind"'>
         <ion-col text-center>
-          <button ion-button round (click)=Ally()>S'allier</button>
+          <button ion-button round (click)=Ally()><img src="assets/imgs/alliance.png" style="width : 100% ; height : 100%"></button>
         </ion-col>
         <ion-col text-center>
-          <button ion-button round (click)=Betray()>Trahir</button>
+          <button ion-button round (click)=Betray()><img src="assets/imgs/trahison.png" style="width : 100% ; height : 100%"></button>
         </ion-col>
       </ion-row>
       <ion-row *ngIf='moteur.players[moteur.battles[this.moteur.index_battles[0]][moteur.index_battles[1]]].buff=="blind"'>
@@ -79,10 +79,10 @@
     <div *ngIf="moteur.battles[this.moteur.index_battles[0]][moteur.index_battles[1]]==moteur.ID_DUO">
       <ion-row>
         <ion-col text-center>
-          <button ion-button round (click)=Ally()>S'allier</button>
+          <button ion-button round (click)=Ally()><img src="assets/imgs/alliance.png" style="width : 100% ; height : 100%"></button>
         </ion-col>
         <ion-col text-center>
-          <button ion-button round (click)=Betray()>Trahir</button>
+          <button ion-button round (click)=Betray()><img src="assets/imgs/trahison.png" style="width : 100% ; height : 100%"></button>
         </ion-col>
       </ion-row>
     </div>
