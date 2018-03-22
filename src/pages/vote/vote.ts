@@ -53,6 +53,7 @@ export class VotePage {
     this.Next();
   }
   Next() {
+    this.allow_change=false;
     if (this.moteur.index_battles[0] >= this.moteur.battles.length - 1 && this.moteur.index_battles[1] == 1) {
       this.moteur.DoBattles();
       this.navCtrl.setRoot(BilanPage);
@@ -74,10 +75,10 @@ export class VotePage {
     }
   }
 
-  maxTime: any = 700000;
+  maxTime: any = 10;
   timer: any;
   hidevalue: boolean;
-
+  allow_change: boolean = true;
   StartTimer() {
     this.timer = setTimeout(x => {
       if (this.maxTime <= 0) { }
@@ -89,7 +90,10 @@ export class VotePage {
       }
 
       else {
-        this.Ally();
+        if (this.allow_change) {
+          this.Ally();
+        }
+
       }
     }, 1000);
   }

@@ -13,33 +13,37 @@ export class DebatePage {
   constructor(public navCtrl: NavController, public moteur: MoteurProvider) {
 
   }
-  ionViewDidEnter(){
-      this.StartTimer();
-    }
+  ionViewDidEnter() {
+    this.StartTimer();
+  }
 
-  Ready(){
+  Ready() {
+    this.allow_change=false;
     this.navCtrl.setRoot(VChangeSPage);
   }
 
-  maxTime: any=120000000;
+  maxTime: any = 120;
   timer: any;
   hidevalue: boolean;
+  allow_change: boolean = true;
 
-  StartTimer(){
-    this.timer = setTimeout(x =>
-      {
-          if(this.maxTime <= 0) { }
-          this.maxTime -= 1;
+  StartTimer() {
+    this.timer = setTimeout(x => {
+      if (this.maxTime <= 0) { }
+      this.maxTime -= 1;
 
-          if(this.maxTime>0){
-            this.hidevalue = false;
-            this.StartTimer();
-          }
-          else{
-              this.Ready();
-          }
-      }, 1000);
-    }
+      if (this.maxTime > 0) {
+        this.hidevalue = false;
+        this.StartTimer();
+      }
+      else {
+        if (this.allow_change) {
+          this.Ready();
+        }
+
+      }
+    }, 1000);
+  }
 
 
 }

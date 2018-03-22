@@ -65,41 +65,49 @@
     <div *ngIf="moteur.battles[this.moteur.index_battles[0]][moteur.index_battles[1]]!=moteur.ID_DUO">
       <ion-row *ngIf='moteur.players[moteur.battles[this.moteur.index_battles[0]][moteur.index_battles[1]]].buff!="blind"'>
         <ion-col text-center>
-          <button ion-button round (click)=Ally()>
-            <img src="assets/imgs/alliance.png" style="width : 100% ; height : 100%">
+          <button ion-button round (click)=Ally() class="vote">
+            <img src="assets/imgs/alliance.png" class="icon">
+
           </button>
+          <h2>S'allier</h2>
         </ion-col>
         <ion-col text-center>
-          <button ion-button round (click)=Betray()>
-            <img src="assets/imgs/trahison.png" style="width : 100% ; height : 100%">
+          <button ion-button round (click)=Betray() class="vote">
+            <img src="assets/imgs/trahison.png" class="icon">
+
           </button>
+          <h2>Trahir</h2>
         </ion-col>
       </ion-row>
       <ion-row *ngIf='moteur.players[moteur.battles[this.moteur.index_battles[0]][moteur.index_battles[1]]].buff=="blind"'>
         <ion-col text-center>
-          <button ion-button round (click)=Random()>?</button>
+          <button ion-button round (click)=Random() class="vote">?</button>
         </ion-col>
       </ion-row>
     </div>
     <div *ngIf="moteur.battles[this.moteur.index_battles[0]][moteur.index_battles[1]]==moteur.ID_DUO">
       <ion-row>
         <ion-col text-center>
-          <button ion-button round (click)=Ally()>
-            <img src="assets/imgs/alliance.png" style="width : 100% ; height : 100%">
+          <button ion-button round (click)=Ally() class="vote">
+            <img src="assets/imgs/alliance.png" class="icon">
+
           </button>
+          <h2>S'allier</h2>
         </ion-col>
         <ion-col text-center>
-          <button ion-button round (click)=Betray()>
-            <img src="assets/imgs/trahison.png" style="width : 100% ; height : 100%">
+          <button ion-button round (click)=Betray() class="vote">
+            <img src="assets/imgs/trahison.png" class="icon">
+
           </button>
+          <h2>Trahir</h2>
         </ion-col>
       </ion-row>
     </div>
     <p text-center *ngIf="hidevalue==false">
-        <FONT size="20pt">
-          <B>{{maxTime}}</B>
-        </FONT>
-      </p>
+      <FONT size="20pt">
+        <B>{{maxTime}}</B>
+      </FONT>
+    </p>
   </ion-grid>
 
 </ion-content>
