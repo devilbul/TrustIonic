@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ChangePage } from '../../pages/change/change'
 import { Event } from '../../classes/Event';
 
 import { Joueur } from '../../providers/joueur/joueur';

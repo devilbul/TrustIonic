@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
 
-import { MoteurProvider } from '../../providers/moteur/moteur';
-
 @Component({
   selector: 'page-regleRole',
   templateUrl: 'regleRole.html',

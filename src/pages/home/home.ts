@@ -6,7 +6,6 @@ import { MoteurProvider } from '../../providers/moteur/moteur';
 
 import { NewGamePage } from '../new-game/new-game';
 import { HallOfFamePage } from '../hall-of-fame/hall-of-fame';
-import { BilanPage } from '../bilan/bilan';
 import { ChangePage } from '../change/change';
 import { RegleMenuPage } from '../regleMenu/regleMenu';
 

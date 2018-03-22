@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { MoteurProvider } from '../../providers/moteur/moteur';
-import { ChangePage } from '../../pages/change/change';
 
 import { Storage } from '@ionic/storage';
 import { HomePage } from '../home/home';

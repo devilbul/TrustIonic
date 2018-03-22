@@ -8,8 +8,6 @@ import { MoteurProvider } from '../../providers/moteur/moteur';
 import { Camera } from '@ionic-native/camera';
 
 
-declare var cordova: any;
-
 @Component({
   selector: 'page-new-player',
   templateUrl: 'new-player.html',

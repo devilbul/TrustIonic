@@ -5,7 +5,6 @@ import { Joueur } from '../../providers/joueur/joueur';
 import { MoteurProvider } from '../../providers/moteur/moteur';
 
 import { ChangePage } from '../../pages/change/change';
-import { VChangeSPage } from '../VchangeS/VchangeS';
 import { DebatePage } from '../debate/debate';
 
 

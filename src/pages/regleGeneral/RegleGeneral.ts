@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, Platform } from 'ionic-angular';
 
-import { ChangePage } from '../change/change';
-import { NewPlayerPage } from '../new-player/new-player';
 
 import { Joueur } from '../../providers/joueur/joueur';
 import { RegleRolePage } from '../regleRole/regleRole';

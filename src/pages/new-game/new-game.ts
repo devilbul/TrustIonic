@@ -4,7 +4,6 @@ import { NavController, NavParams, Platform } from 'ionic-angular';
 import { ChangePage } from '../change/change';
 import { NewPlayerPage } from '../new-player/new-player';
 
-import { File } from '@ionic-native/file';
 import { Joueur } from '../../providers/joueur/joueur';
 import { MoteurProvider } from '../../providers/moteur/moteur';
 
@@ -19,7 +18,7 @@ export class NewGamePage {
   playerList: Joueur[];
   playerListLength: number;
 
-  constructor(private file: File, public moteur: MoteurProvider, public navCtrl: NavController, public navParams: NavParams, platform: Platform) {
+  constructor(public moteur: MoteurProvider, public navCtrl: NavController, public navParams: NavParams, platform: Platform) {
     let backAction = platform.registerBackButtonAction(() => {
       console.log("second");
       this.navCtrl.pop();
