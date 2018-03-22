@@ -6,14 +6,13 @@ import { NewPlayerPage } from '../new-player/new-player';
 
 import { Joueur } from '../../providers/joueur/joueur';
 import { MoteurProvider } from '../../providers/moteur/moteur';
-import { RegleGeneralPage } from '../regleGeneral/RegleGeneral';
 import { RegleRolePage } from '../regleRole/regleRole';
 
 @Component({
-  selector: 'page-regleMenu',
-  templateUrl: 'regleMenu.html',
+  selector: 'page-regleGeneral',
+  templateUrl: 'regleGeneral.html',
 })
-export class RegleMenuPage {
+export class RegleGeneralPage {
 
   playerList: Joueur[];
   playerListLength: number;
@@ -27,13 +26,6 @@ export class RegleMenuPage {
     }, 2)
   }
 
-  GotoRegles() {
-    this.navCtrl.push(RegleGeneralPage);
-  }
-
-  GotoEvents() {
-
-  }
 
   GotoRoles() {
     this.navCtrl.push(RegleRolePage);

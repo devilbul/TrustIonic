@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Nouvelle Partie</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <ion-card-content class="item item-text-wrap">
+    <h1 text-center>Innocent</h1>
+    <p>Les innocents sont les rôles de base du jeu. Ils apparaissent avec l’événement “Blanc comme neige”. Les innocents ne
+      peuvent gagner la partie que si tous les innocents et tous les détectives atteignent les 10 points ou s’il ne reste
+      que des innocents et détectives en jeu.
+    </p>
+    </ion-card-content>
+    <ion-card-content class="item item-text-wrap">
+    <h1 text-center>Traître</h1>
+    <p>Il y a forcément 1 traître à la fin du premier tour. Ils apparaissent avec l’événement “Veste retournée”. Les traîtres
+      gagnent dès qu’ils atteignent les 10 points individuellement.
+    </p>
+  </ion-card-content>
+  <ion-card-content class="item item-text-wrap">
+    <h1 text-center>Suiveur</h1>
+    <p>Les Suiveurs apparaissent avec l’événement “À ses crochets”. Les suiveurs sont lié à un traître et ne peuvent gagner
+      que si leur traître lié gagne ou si leur traître et eux sont les seuls joueurs restants.
+    </p>
+  </ion-card-content>
+  <ion-card-content class="item item-text-wrap">
+    <h1 text-center>Détective</h1>
+    <p>Les détectives sont des innocents spéciaux. Ils apparaissent avec l’événement “Élémentaire mon cher”. Ils ont la capacité
+      de dénoncer un joueur une fois par tour: Si le détective devine correctement le rôle du joueur ciblé, la cible perd
+      3 points, s’il se trompe c’est lui qui perd 3 points. Le détective disparaît si tous les innocents disparaissent. Ses
+      conditions de victoire sont les mêmes que celles des innocents.
+    </p>
+  </ion-card-content>
+  <ion-card-content class="item item-text-wrap">
+    <h1 text-center>Assassins</h1>
+    <p>Les assassins apparaissent avec l’événement “Folie Meurtrière” et ont la capacité de retirer un point à un joueur par
+      tour. Comme les traître, les assassins gagnent seuls soit en accumulant 15 points, soit en faisant disparaître tous
+      les innocents.
+    </p>
+  </ion-card-content>
+</ion-content>

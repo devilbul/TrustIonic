@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Nouvelle Partie</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <p>Bienvenue au Trust Hotel, vous êtes mes hôtes jusqu’à nouvel ordre. Ici vos certitudes pourraient s’effondrer et ceux que
+    vous pensiez vos amis pourraient devenir vos pires ennemis. Si vous voulez vous échapper, vous allez devoir jouer à un
+    petit jeu et suivre mes règles: </p>
+  <p>En début de partie, chaque joueur se voit attribuer un quota de 3 points, au fil du jeu vous aurez des occasions d’en gagner
+    ou perdre. Accumulez ces points et vous pourriez vous frayer un chemin vers la liberté, perdez les tous et vous serez
+    effacé du Trust Hotel. </p>
+  <p>En début de partie, la majorité des joueurs aura pour rôle <b>Innocent</b>, sauf un qui sera <b>Traître</b>, au fil de la partie, le
+    rôle de certain innocents risque de changer. Les conditions de victoires changent en fonction du rôle, essayez donc de
+    biens tous les comprendre afin d'appréhender le comportement des autres joueurs.
+  </p>
+  <div padding>
+    <button (click)="GotoRoles()" ion-button color="primary" block>Liste des Rôles</button>
+  </div>
+  <p>Le jeu alterne entre deux phases qui se succèdent: la <b>phase événement</b> et la <b>phase de vote</b>:</p>
+  <p>Durant la <b>phase événement</b>, le smartphone passe entre tous les joueurs et donne des informations diverses. Cela peut être
+    l’ajout d’une règle spéciale, un changement de rôle ou des informations sur un autre joueur.
+  </p>
+
+  <p><b>Il est interdit de montrer un écran qui vous est destiné à un autre joueur</b>, vous avez le droit de partager les informations
+    que vous avez reçu mais cela doit se faire oralement lors des débats.
+  </p>
+  <p>La <b>phase de vote</b> se compose d’un <b>débat préliminaire</b> puis des <b>face à face</b>. Dans cette phase, les joueurs se font face dans
+    des “duels de confiance” et les différents face à face s’affichent sur l’écran de débat. Lors des face à face, les joueurs
+    auront le choix entre trahir ou s’allier avec leur opposant:
+  </p>
+  <p>
+    -Si les deux joueurs ont choisi de s’allier, les deux joueurs gagnent <b>2 points</b>
+  </p>
+  <p>
+    -Si un joueur s’allie mais que l’autre le trahi, celui qui s’est allié <b>perd 1 point</b> et celui qui a trahi <b>en gagne 3</b>.
+  </p>
+  <p>
+    -Si les deux joueurs ont choisi de se trahir, alors <b>aucun des deux ne gagne de point</b>.
+  </p>
+  <p>
+    Note: En cas de nombre de joueurs impaire, deux joueurs devront voter ensemble comme un seul.
+  </p>
+
+</ion-content>
