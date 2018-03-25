@@ -3,7 +3,6 @@ export class Partie {
   id: number;
 }
 
-
 export class Joueur {
   pseudo: String = "Player";
   image: String = "";
@@ -29,6 +28,7 @@ export class Joueur {
     this.image = image;
     this.points = 3;
   }
+
   Role() {
     switch (this.etat) {
       case "survivor":

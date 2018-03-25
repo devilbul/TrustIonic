@@ -7,8 +7,6 @@ import { NewPlayerPage } from '../new-player/new-player';
 import { Joueur } from '../../providers/joueur/joueur';
 import { MoteurProvider } from '../../providers/moteur/moteur';
 
-declare var cordova: any;
-
 @Component({
   selector: 'page-new-game',
   templateUrl: 'new-game.html',
